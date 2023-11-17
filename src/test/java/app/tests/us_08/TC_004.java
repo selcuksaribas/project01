@@ -1,7 +1,7 @@
 package app.tests.us_08;
 
-import app.pages.CheckOutPage;
-import app.pages.HomePage;
+import app.pages.CheckOutPageHalil;
+import app.pages.HomePageHalil;
 import app.utilities.ActionsUtil;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
@@ -61,34 +61,34 @@ public class TC_004 {
 
     //2- User clicks on the Sign-in button at home page
         //Create page object for HomePage
-        HomePage homePage = new HomePage();
-        homePage.signInOption.click();
+        HomePageHalil homePageHalil = new HomePageHalil();
+        homePageHalil.signInOption.click();
     //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePage.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
     //4- User enters valid password ==> property=>us_08_password (testng)
-        homePage.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
     //5- User clicks on the Sign-in button at login page
-        homePage.rememberMeCheckBox.click();
+        homePageHalil.rememberMeCheckBox.click();
     //6- User is able to Sign In
-        homePage.signInButton.click();
+        homePageHalil.signInButton.click();
         //wait may need if the internet connection is slow or website is slow
-        Assert.assertTrue(homePage.signOutButton.isDisplayed());
+        Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
     //7- User clicks on to the 'search box'
-        homePage.searchBox.click();
+        homePageHalil.searchBox.click();
     //8- User enter a product name ==> apple
-        homePage.searchBox.sendKeys("apple");
+        homePageHalil.searchBox.sendKeys("apple");
         //homePage.searchBox.sendKeys("apple" + Keys.ENTER); //alternative
 
         //????????????try to use JavaSkiprit here??????????????????
         //assert if its able to type apple
 
     //9- User clicks the 'search icon'
-        homePage.searchIcon.click();
+        homePageHalil.searchIcon.click();
 
     ////10- User clicks the 'add to wishlist' icon first three product on list
         for (int i = 0; i < 2; i++) {
-            ActionsUtil.actionsHoverOverOnElement(homePage.searchResult1WishIcon);
-            homePage.searchResult1WishIcon.click();
+            ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIcon);
+            homePageHalil.searchResult1WishIcon.click();
             WaitUtils.waitFor(5);
         }
 
@@ -101,21 +101,21 @@ public class TC_004 {
 
 //12- User clicks 'wishlist' icon top on the page
 //        ActionsUtil.actionsHoverOverOnElement(homePage.wishListPageButton);
-        homePage.wishListPageButton.click();
+        homePageHalil.wishListPageButton.click();
 
 //13- User must see all chosen products on the wishlist page
         WaitUtils.waitFor(5);
         ActionsUtil.actionsScrollDown();
         WaitUtils.waitFor(5);
-        ActionsUtil.actionsHoverOverOnElement(homePage.wishAddedTableQuickView);
-        Assert.assertTrue(homePage.wishAddedTable.isDisplayed());
+        ActionsUtil.actionsHoverOverOnElement(homePageHalil.wishAddedTableQuickView);
+        Assert.assertTrue(homePageHalil.wishAddedTable.isDisplayed());
 
 //14- User clicks first 'ADD TO CARD' button for each item in wishlist
         for (int i = 0; i < 2; i++) {
-            homePage.wishAddedTableCartButtonItem1.click();
+            homePageHalil.wishAddedTableCartButtonItem1.click();
             WaitUtils.waitFor(1);
 //15- User see simple alert "“Apple” has been added to your cart."
-            Assert.assertTrue(homePage.itemAddedToCartAlert.isDisplayed());
+            Assert.assertTrue(homePageHalil.itemAddedToCartAlert.isDisplayed());
             WaitUtils.waitFor(10);
             ActionsUtil.actionsScrollDown();
             WaitUtils.waitFor(1);
@@ -124,55 +124,55 @@ public class TC_004 {
 //16- User clicks "Cart" button
         ActionsUtil.actionsScrollUp();
         WaitUtils.waitFor(1);
-        homePage.cartButton.click();
+        homePageHalil.cartButton.click();
 
 //17- User clicks "CHECKOUT" button
         WaitUtils.waitFor(1);
-        homePage.checkOutButton.click();
+        homePageHalil.checkOutButton.click();
 
 
         //18- User fills in billing information
 //Create page object for CheckOutPage
-        CheckOutPage checkOutPage = new CheckOutPage();
+        CheckOutPageHalil checkOutPageHalil = new CheckOutPageHalil();
 
         //        19- User enters 'First name' ->	Halil
-        checkOutPage.firstName.clear();
-        checkOutPage.firstName.sendKeys("Halil");
+        checkOutPageHalil.firstName.clear();
+        checkOutPageHalil.firstName.sendKeys("Halil");
 //        20- User enters 'Last name' ->	TestNG
-        checkOutPage.lastName.clear();
-        checkOutPage.lastName.sendKeys("TestNG");
+        checkOutPageHalil.lastName.clear();
+        checkOutPageHalil.lastName.sendKeys("TestNG");
 //        21- User enters 'Company name' ->	TechPro Education
         //?? checkOutPage.companyName.sendKeys("TechPro Education");
 //        22- User enters 'Country / Region' ->	Canada
-        checkOutPage.countryStateDropdown().selectByVisibleText("Canada");
+        checkOutPageHalil.countryStateDropdown().selectByVisibleText("Canada");
 
 //        23- User enters 'Street address' ->	999 Java Street
-        checkOutPage.streetAddressFirstLine.clear();
-        checkOutPage.streetAddressFirstLine.sendKeys("999 Java Street");
+        checkOutPageHalil.streetAddressFirstLine.clear();
+        checkOutPageHalil.streetAddressFirstLine.sendKeys("999 Java Street");
 //        24- User enters 'Town/City' ->	Toronto
-        checkOutPage.townCity.clear();
-        checkOutPage.townCity.sendKeys("Toronto");
+        checkOutPageHalil.townCity.clear();
+        checkOutPageHalil.townCity.sendKeys("Toronto");
 //        25- User enters 'Province' ->	Ontario
-        checkOutPage.provinceStateDropdown().selectByVisibleText("Ontario");
+        checkOutPageHalil.provinceStateDropdown().selectByVisibleText("Ontario");
 //        26- User enters 'Postal Code' ->	M5V 3L9
-        checkOutPage.postCodeZIP.clear();
-        checkOutPage.postCodeZIP.sendKeys("M5V 3L9");
+        checkOutPageHalil.postCodeZIP.clear();
+        checkOutPageHalil.postCodeZIP.sendKeys("M5V 3L9");
 //        27- User enters 'Phone' ->	4679872143
-        checkOutPage.phone.clear();
-        checkOutPage.phone.sendKeys("4679872143");
+        checkOutPageHalil.phone.clear();
+        checkOutPageHalil.phone.sendKeys("4679872143");
 //        28- User enters 'Email address' ->	halile.test.ng@gmail.com
         //if it s allready written you can check by JavaScript
 //        checkOutPage.email.sendKeys("halile.test.ng@gmail.com");
 
         //extra
-        checkOutPage.orderNote.sendKeys("This purchase for test reasons");
+        checkOutPageHalil.orderNote.sendKeys("This purchase for test reasons");
 
 //        29- User choose "Payment Methods" ->	Wire transfer/EFT' or 'Pay at door'
         WaitUtils.waitFor(1);
         ActionsUtil.actionsScrollDown();
 
         WaitUtils.waitFor(3);
-        checkOutPage.payAtTheDoorNew.click();
+        checkOutPageHalil.payAtTheDoorNew.click();
 
         //if you want to use wire/eft option
 //        WaitUtils.waitFor(1);
@@ -183,11 +183,11 @@ public class TC_004 {
 //        ActionsUtil.actionsScrollDown();
 
         //30- User cliscks "PLACE ORDER"
-        checkOutPage.placeOrderButton.click();
+        checkOutPageHalil.placeOrderButton.click();
 
         //31- see alarm for report
         WaitUtils.waitFor(1);
-        Assert.assertTrue(checkOutPage.noShippingMethodAlert.isDisplayed());
+        Assert.assertTrue(checkOutPageHalil.noShippingMethodAlert.isDisplayed());
 
 
     }
@@ -197,59 +197,59 @@ public class TC_004 {
         Driver.getDriver().get("https://allovercommerce.com/checkout-2/");
         //2- User clicks on the Sign-in button at home page
         //Create page object for HomePage
-        HomePage homePage = new HomePage();
-        CheckOutPage checkOutPage = new CheckOutPage();
+        HomePageHalil homePageHalil = new HomePageHalil();
+        CheckOutPageHalil checkOutPageHalil = new CheckOutPageHalil();
 
-        homePage.signInOption.click();
+        homePageHalil.signInOption.click();
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePage.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
         //4- User enters valid password ==> property=>us_08_password (testng)
-        homePage.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
         //5- User clicks on the Sign-in button at login page
-        homePage.rememberMeCheckBox.click();
+        homePageHalil.rememberMeCheckBox.click();
         //6- User is able to Sign In
-        homePage.signInButton.click();
+        homePageHalil.signInButton.click();
 
         WaitUtils.waitFor(1);
-        checkOutPage.checkOutButton.click();
+        checkOutPageHalil.checkOutButton.click();
 
         //        19- User enters 'First name' ->	Halil
-        checkOutPage.firstName.clear();
-        checkOutPage.firstName.sendKeys("Halil");
+        checkOutPageHalil.firstName.clear();
+        checkOutPageHalil.firstName.sendKeys("Halil");
 //        20- User enters 'Last name' ->	TestNG
-        checkOutPage.lastName.clear();
-        checkOutPage.lastName.sendKeys("TestNG");
+        checkOutPageHalil.lastName.clear();
+        checkOutPageHalil.lastName.sendKeys("TestNG");
 //        21- User enters 'Company name' ->	TechPro Education
        //?? checkOutPage.companyName.sendKeys("TechPro Education");
 //        22- User enters 'Country / Region' ->	Canada
-        checkOutPage.countryStateDropdown().selectByVisibleText("Canada");
+        checkOutPageHalil.countryStateDropdown().selectByVisibleText("Canada");
 
 //        23- User enters 'Street address' ->	999 Java Street
-        checkOutPage.streetAddressFirstLine.sendKeys("999 Java Street");
+        checkOutPageHalil.streetAddressFirstLine.sendKeys("999 Java Street");
 //        24- User enters 'Town/City' ->	Toronto
-        checkOutPage.townCity.clear();
-        checkOutPage.townCity.sendKeys("Toronto");
+        checkOutPageHalil.townCity.clear();
+        checkOutPageHalil.townCity.sendKeys("Toronto");
 //        25- User enters 'Province' ->	Ontario
-        checkOutPage.provinceStateDropdown().selectByVisibleText("Ontario");
+        checkOutPageHalil.provinceStateDropdown().selectByVisibleText("Ontario");
 //        26- User enters 'Postal Code' ->	M5V 3L9
-        checkOutPage.postCodeZIP.clear();
-        checkOutPage.postCodeZIP.sendKeys("M5V 3L9");
+        checkOutPageHalil.postCodeZIP.clear();
+        checkOutPageHalil.postCodeZIP.sendKeys("M5V 3L9");
 //        27- User enters 'Phone' ->	4679872143
-        checkOutPage.phone.clear();
-        checkOutPage.phone.sendKeys("4679872143");
+        checkOutPageHalil.phone.clear();
+        checkOutPageHalil.phone.sendKeys("4679872143");
 //        28- User enters 'Email address' ->	halile.test.ng@gmail.com
         //if it s allready written you can check by JavaScript
 //        checkOutPage.email.sendKeys("halile.test.ng@gmail.com");
 
         //extra
-        checkOutPage.orderNote.sendKeys("This purchase for test reasons");
+        checkOutPageHalil.orderNote.sendKeys("This purchase for test reasons");
 
 //        29- User choose "Payment Methods" ->	Wire transfer/EFT' or 'Pay at door'
         WaitUtils.waitFor(1);
         ActionsUtil.actionsScrollDown();
 
         WaitUtils.waitFor(3);
-        checkOutPage.payAtTheDoorNew.click();
+        checkOutPageHalil.payAtTheDoorNew.click();
 
         //if you want to use wire/eft option
 //        WaitUtils.waitFor(1);
@@ -260,11 +260,11 @@ public class TC_004 {
 //        ActionsUtil.actionsScrollDown();
 
         //30- User cliscks "PLACE ORDER"
-        checkOutPage.placeOrderButton.click();
+        checkOutPageHalil.placeOrderButton.click();
 
 //31- see alarm for report
         WaitUtils.waitFor(1);
-        Assert.assertTrue(checkOutPage.noShippingMethodAlert.isDisplayed());
+        Assert.assertTrue(checkOutPageHalil.noShippingMethodAlert.isDisplayed());
 
         Driver.closeDriver();
     }

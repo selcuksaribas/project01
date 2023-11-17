@@ -1,8 +1,7 @@
 package app.tests.us_08;
 
-import app.pages.HomePage;
+import app.pages.HomePageHalil;
 import app.utilities.*;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -37,35 +36,35 @@ public class TC_002 {
 
     //2- User clicks on the Sign-in button at home page
         //Create page object for HomePage
-        HomePage homePage = new HomePage();
-        homePage.signInOption.click();
+        HomePageHalil homePageHalil = new HomePageHalil();
+        homePageHalil.signInOption.click();
     //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePage.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
     //4- User enters valid password ==> property=>us_08_password (testng)
-        homePage.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
     //5- User clicks on the Sign-in button at login page
-        homePage.rememberMeCheckBox.click();
+        homePageHalil.rememberMeCheckBox.click();
     //6- User is able to Sign In
-        homePage.signInButton.click();
+        homePageHalil.signInButton.click();
         //wait may need if the internet connection is slow or website is slow
-        Assert.assertTrue(homePage.signOutButton.isDisplayed());
+        Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
     //7- User clicks on to the 'search box'
-        homePage.searchBox.click();
+        homePageHalil.searchBox.click();
     //8- User enter a product name ==> apple
-        homePage.searchBox.sendKeys("apple");
+        homePageHalil.searchBox.sendKeys("apple");
         //homePage.searchBox.sendKeys("apple" + Keys.ENTER); //alternative
 
         //????????????try to use JavaSkiprit here??????????????????
         //assert if its able to type apple
 
     //9- User clicks the 'search icon'
-        homePage.searchIcon.click();
+        homePageHalil.searchIcon.click();
 
     ////10- User clicks the 'add to wishlist' icon first three product on list
         for (int i = 0; i < 2; i++) {
             System.out.println(i);
-            ActionsUtil.actionsHoverOverOnElement(homePage.searchResult1WishIcon);
-            homePage.searchResult1WishIcon.click();
+            ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIcon);
+            homePageHalil.searchResult1WishIcon.click();
             WaitUtils.waitFor(5);
         }
 
@@ -78,14 +77,14 @@ public class TC_002 {
 
 //12- User clicks 'wishlist' icon top on the page
 //        ActionsUtil.actionsHoverOverOnElement(homePage.wishListPageButton);
-        homePage.wishListPageButton.click();
+        homePageHalil.wishListPageButton.click();
 
 //13- User must see all chosen products on the wishlist page
         WaitUtils.waitFor(5);
         ActionsUtil.actionsScrollDown();
         WaitUtils.waitFor(5);
-        ActionsUtil.actionsHoverOverOnElement(homePage.wishAddedTableQuickView);
-        Assert.assertTrue(homePage.wishAddedTable.isDisplayed());
+        ActionsUtil.actionsHoverOverOnElement(homePageHalil.wishAddedTableQuickView);
+        Assert.assertTrue(homePageHalil.wishAddedTable.isDisplayed());
 
         Driver.closeDriver();
 
