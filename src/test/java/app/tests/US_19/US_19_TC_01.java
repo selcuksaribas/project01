@@ -147,7 +147,6 @@ public class US_19_TC_01 {
 
 //        Close the driver
         Driver.closeDriver();
-        Driver.closeDriver();
 
     }
 
