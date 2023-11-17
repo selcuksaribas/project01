@@ -17,7 +17,7 @@ public class ActionsUtil {
         new Actions(Driver.getDriver()).moveToElement(element).perform();
     }
     //    ACTIONS_SCROLL_DOWN
-    public static void actionsScrollDown() {
+    public static void actionsScrollDown(WebElement couponCodeBox) {
         //        Actions actions = new Actions(driver);
         new Actions(Driver.getDriver()).sendKeys(Keys.PAGE_DOWN).perform();
     }
