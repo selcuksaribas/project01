@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/beyaz/IdeaProjects/project01/src/test/java/app/tests/US_19">
+        <classes>
+            <class name="app.tests.US_19.US_19_TC_01">
+                <methods>
+                    <include name="US_19_TC_01"/>
+                </methods>
+            </class>
+            <class name="app.tests.US_19.US_19_TC_02">
+                <methods>
+                    <include name="US_19_TC_02"/>
+                </methods>
+            </class>
+            <class name="app.tests.US_19.US_19_TC_03">
+                <methods>
+                    <include name="US_19_TC_03"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
