@@ -1,6 +1,7 @@
 package app.tests.US_09;
 
-import app.pages.HomePage;
+
+import app.pages.Homepage;
 import app.pages.VendorRegistrationPage;
 import app.utilities.*;
 import org.testng.Assert;
@@ -16,7 +17,7 @@ public class US09_TC03 {
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
 
-       HomePage homePage = new HomePage();
+       Homepage homePage = new Homepage();
       VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
 
         //Click on register link

@@ -1,12 +1,14 @@
 package app.tests.US_09;
 
-import app.pages.HomePage;
+
+import app.pages.Homepage;
 import app.pages.VendorRegistrationPage;
-import app.pages.VendorStoreManager;
+
 import app.pages.VendorStoreSetUp;
 import app.utilities.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 
 public class US09_TC04 {
 
@@ -17,7 +19,7 @@ public class US09_TC04 {
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
 
-       HomePage homePage = new HomePage();
+       Homepage homePage = new Homepage();
        VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
        VendorStoreSetUp   vendorStoreSetUp = new VendorStoreSetUp();
 

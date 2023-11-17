@@ -1,6 +1,7 @@
 package app.tests.US_09;
 
-import app.pages.HomePage;
+
+import app.pages.Homepage;
 import app.pages.VendorRegistrationPage;
 import app.pages.VendorStoreManager;
 import app.pages.VendorStoreSetUp;
@@ -25,7 +26,7 @@ public class   US09_TC01 {
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
 
-        HomePage homePage = new HomePage();
+        Homepage homePage = new Homepage();
         VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
         VendorStoreSetUp vendorStoreSetUp = new VendorStoreSetUp();
         VendorStoreManager   vendorStoreManager = new VendorStoreManager();
@@ -196,56 +197,55 @@ public class   US09_TC01 {
         WaitUtils.waitFor(1);
         vendorStoreManager.LogOutButton.click();
 
-       ExtentReportUtils.flush();
+        ExtentReportUtils.flush();
         Thread.sleep(5000);
         Driver.closeDriver();
 
     }
-        @Test
-        public void VendorRegistrationPositiveTest2() throws InterruptedException {
+    @Test
+    public void VendorRegistrationPositiveTest2() throws InterruptedException {
 
-            ExtentReportUtils.createTestReport("vendor_registration_test","positive_test2");
-            //Go to home page
-            Driver.getDriver().get("https://allovercommerce.com/");
+        ExtentReportUtils.createTestReport("vendor_registration_test","positive_test2");
+        //Go to home page
+        Driver.getDriver().get("https://allovercommerce.com/");
 
-           HomePage homePage = new HomePage();
-           VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
+        Homepage homePage = new Homepage();
+        VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
 
-            //Click on register link
-            homePage.register_Link.click();
-            //Click on the Become a Vendor button
-            homePage.signUp_BecomeVendorLink.click();
-            //Enter registered email in the Email field
-            vendorRegistrationPage.vendorRegister_Email.sendKeys("artez.hossam@forkshape.com");
-            //Enter verification code in the Verification Code field
-            vendorRegistrationPage.verificationCode.sendKeys("134155");
-            //Enter password in the password field
-            vendorRegistrationPage.vendorPassword.sendKeys("Summer12*");
-            //Enter  same password in the password field
-            vendorRegistrationPage.vendorConfirmPassword.sendKeys("Summer12*");
-            //Click on  the register button
+        //Click on register link
+        homePage.register_Link.click();
+        //Click on the Become a Vendor button
+        homePage.signUp_BecomeVendorLink.click();
+        //Enter registered email in the Email field
+        vendorRegistrationPage.vendorRegister_Email.sendKeys("artez.hossam@forkshape.com");
+        //Enter verification code in the Verification Code field
+        vendorRegistrationPage.verificationCode.sendKeys("134155");
+        //Enter password in the password field
+        vendorRegistrationPage.vendorPassword.sendKeys("Summer12*");
+        //Enter  same password in the password field
+        vendorRegistrationPage.vendorConfirmPassword.sendKeys("Summer12*");
+        //Click on  the register button
 
-            JSUtils.JSscrollIntoView(vendorRegistrationPage.registerButton);
-            WaitUtils.waitFor(1);
-            vendorRegistrationPage.registerButton.click();
-            WaitUtils.waitFor(2);
-            vendorRegistrationPage.registerButton.click();
+        JSUtils.JSscrollIntoView(vendorRegistrationPage.registerButton);
+        WaitUtils.waitFor(1);
+        vendorRegistrationPage.registerButton.click();
+        WaitUtils.waitFor(2);
+        vendorRegistrationPage.registerButton.click();
 
-            //Verify that "This Email already exists. Please login to the site and apply as vendor." message is visible
-            JSUtils.JSscrollIntoView(vendorRegistrationPage.thisEmailAlreadyExistMessage);
+        //Verify that "This Email already exists. Please login to the site and apply as vendor." message is visible
+        JSUtils.JSscrollIntoView(vendorRegistrationPage.thisEmailAlreadyExistMessage);
 
-            Assert.assertEquals(vendorRegistrationPage.thisEmailAlreadyExistMessage.getText(),
-                    "This Email already exists. Please login to the site and apply as vendor.");
-            WaitUtils.waitFor(2);
-            ExtentReportUtils.passAndCaptureScreenshot("'This Email already exists. Please login to the site and apply as vendor.' message is visible");
-
-
-            Thread. sleep(5000);
-            ExtentReportUtils.flush();
-            Driver.closeDriver();
+        Assert.assertEquals(vendorRegistrationPage.thisEmailAlreadyExistMessage.getText(),
+                "This Email already exists. Please login to the site and apply as vendor.");
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("'This Email already exists. Please login to the site and apply as vendor.' message is visible");
 
 
-        }
+        Thread. sleep(5000);
+        ExtentReportUtils.flush();
+        Driver.closeDriver();
+
 
     }
 
+}
