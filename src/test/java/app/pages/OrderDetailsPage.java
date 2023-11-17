@@ -17,4 +17,9 @@ public class OrderDetailsPage {
     @FindBy(xpath = "//h2[@class='page-title']")
     public static WebElement myAccount;
 
+    @FindBy(xpath = "//p[contains(text(), 'Thank you. Your order has been received.')]")
+   // @FindBy (xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
+    public static WebElement orderReceivedSuccessfullyMessage;
+
+
 }

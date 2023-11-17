@@ -1,11 +1,11 @@
 package app.tests.US_20;
 
 import app.pages.*;
-import app.utilities.ActionsUtil;
-import app.utilities.ConfigReader;
-import app.utilities.Driver;
-import app.utilities.WaitUtils;
+import app.utilities.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +13,8 @@ public class TC_01 {
 
     @Test
     public void TC_01(){
+
+        ExtentReportUtils.createTestReport("Allover_commerce_test", "TC_01");
 
            // AllovercommercePage allovercommercePage = new AllovercommercePage();
             ProductPage productPage = new ProductPage();
@@ -74,10 +76,22 @@ public class TC_01 {
 
         //    Click on Proceed to checkout button
 
-       //ActionsUtil.actionsScrollDown(cartPage.proceedToCheckOut);
+       //ActionsUtil.actionsScrollDown(cartPage.checkout);
 
-        WaitUtils.waitFor(2);
-        CartPage.proceedToCheckOut.click();
+        WaitUtils.waitFor(5);
+        //CartPage.checkout.click();
+
+       //WebElement checkout = cartPage.checkout;
+      // JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver();
+       //javascriptExecutor.executeScript("argument[0].click()", proceedToCheckOut);
+//       ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", WaitUtils.waitForVisibility(checkout,5));
+//        JavascriptExecutor jsout = (JavascriptExecutor) Driver.getDriver();
+//        jsout.executeScript("argument[0].click();", checkout);
+
+        //CartPage.proceedToCheckOut.click();
+        WebElement checkOut = cartPage.proceedToCheckOut;
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver();
+        javascriptExecutor.executeScript("arguments[0].click()", checkOut);
 
         //    Enter Billing First Name and Last Name
 
@@ -113,16 +127,50 @@ public class TC_01 {
 
         //    Click on Place order button
 
-        WaitUtils.waitFor(5);
-        CheckoutPage.placeOrderButton.click();
+        //CheckoutPage.placeOrderButton.click();
+
+        WaitUtils.waitFor(3);
+        WebElement placeOrder = checkoutPage.placeOrderButton;
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollIntoView(true);", WaitUtils.waitForVisibility(placeOrder,5));
+        js.executeScript("arguments[0].click()", placeOrder);
+//        JavascriptExecutor jsch = (JavascriptExecutor) Driver.getDriver();
+//        jsch.executeScript("argument[0].click();", window);
+        //CheckoutPage.placeOrderButton.click();
 
 
 
       //  Verify that "Thank you. Your order has been received." is visible.
 
-        WaitUtils.waitFor(2);
+        //WaitUtils.waitFor(1);
 
-        Assert.assertTrue(CheckoutPage.orderReceivedSuccessfullyMessage.getText().contains("Thank you"));
+        OrderDetailsPage orderDetailsPage = new OrderDetailsPage();
+
+        //Assert.assertTrue(OrderDetailsPage.orderReceivedSuccessfullyMessage.isDisplayed());
+
+        //OrderDetailsPage.orderReceivedSuccessfullyMessage.isDisplayed();
+
+        WebElement successfullyMessage = OrderDetailsPage.orderReceivedSuccessfullyMessage;
+        JavascriptExecutor javascriptExecutor1 = (JavascriptExecutor) Driver.getDriver();
+       // javascriptExecutor1.executeScript("Thank you", successfullyMessage);
+        javascriptExecutor1.executeScript("arguments[0].scrollIntoView(true);",successfullyMessage);
+
+        //CheckoutPage.orderReceivedSuccessfullyMessage.isDisplayed();
+
+
+        //Assert.assertTrue(OrderDetailsPage.orderReceivedSuccessfullyMessage.getText().contains("Thank you"));
+        //ExtentReportUtils.passAndCaptureScreenshot("THANK YOU.");
+        ExtentReportUtils.passAndCaptureScreenshot("Thank you");
+
+
+        Driver.closeDriver();
+        ExtentReportUtils.flush();
+
+
+
+
+
+
 
 
        //Click on 'My Account -Orders

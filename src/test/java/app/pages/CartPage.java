@@ -24,6 +24,7 @@ public class CartPage {
     //@FindBy(xpath = "//a[@class=\"checkout-button button alt wc-forward\"]")
     @FindBy (xpath = "//*[@class='checkout-button button alt wc-forward']")
     public static WebElement proceedToCheckOut;
+    //public static WebElement checkout;
 
 
 

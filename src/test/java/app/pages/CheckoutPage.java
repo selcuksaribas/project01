@@ -43,7 +43,6 @@ public class CheckoutPage {
 
     @FindBy(id = "place_order")
     public static WebElement placeOrderButton;
+    // public static WebElement window;
 
-    @FindBy(xpath = "//p[contains(text(), 'Thank you. Your order has been received.')]")
-    public static WebElement orderReceivedSuccessfullyMessage;
 }
