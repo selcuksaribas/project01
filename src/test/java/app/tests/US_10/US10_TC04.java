@@ -12,14 +12,13 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class US10_TC04 {
-    Base base;
-    VendorRegistrationPage vendorRegistrationPage;
+
     @Test
     public void tc04() throws IOException {
         ExtentReportUtils.createTestReport("password_strength_test","fourth_test");
 
-        base = new Base();
-        vendorRegistrationPage = new VendorRegistrationPage();
+       Base base = new Base();
+      VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
         base.repeat("Winter45*");
 
         base.checkInputField();

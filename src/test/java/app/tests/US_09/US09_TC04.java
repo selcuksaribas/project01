@@ -9,21 +9,18 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US09_TC04 {
-    HomePage homePage;
-    VendorRegistrationPage vendorRegistrationPage;
-    VendorStoreSetUp  vendorStoreSetUp;
-    VendorStoreManager vendorStoreManager;
+
 
     @Test
     public void test04() throws InterruptedException {
         ExtentReportUtils.createTestReport("Password_test","fourth_test");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
-        //Create objects
-        homePage = new HomePage();
-        vendorRegistrationPage = new VendorRegistrationPage();
-        vendorStoreSetUp = new VendorStoreSetUp();
-        vendorStoreManager = new VendorStoreManager();
+
+       HomePage homePage = new HomePage();
+       VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
+       VendorStoreSetUp   vendorStoreSetUp = new VendorStoreSetUp();
+
         //Click on register link
         WaitUtils.waitForPageToLoad(5);
         homePage.register_Link.click();

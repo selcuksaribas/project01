@@ -14,14 +14,14 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class US10_TC01 {
-    Base base;
-     VendorRegistrationPage vendorRegistrationPage;
+
+
 
     @Test
     public void tc01() throws IOException {
         ExtentReportUtils.createTestReport("password_strength_test","first_test");
-        base = new Base();
-        vendorRegistrationPage = new VendorRegistrationPage();
+       Base base = new Base();
+       VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
         base.repeat("Sun1*");
 
         base.checkInputField();

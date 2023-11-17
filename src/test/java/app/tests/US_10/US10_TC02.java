@@ -14,14 +14,14 @@ import java.io.IOException;
 
 public class US10_TC02 {
 
-    Base base;
-   VendorRegistrationPage vendorRegistrationPage;
+
+
     @Test
     public void tc02() throws IOException {
         ExtentReportUtils.createTestReport("password_strength_test","second_test");
 
-        base = new Base();
-        vendorRegistrationPage = new VendorRegistrationPage();
+      Base  base = new Base();
+       VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
         base.repeat("summer");
 
         base.checkInputField();
