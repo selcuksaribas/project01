@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 
 import java.util.Set;
 
-public class US09_TC01 {
+public class   US09_TC01 {
 
     HomePage homePage;
     VendorRegistrationPage vendorRegistrationPage;
@@ -22,6 +22,7 @@ public class US09_TC01 {
     VendorStoreManager vendorStoreManager;
     @Test
     public void VendorRegistrationPositiveTest1() throws InterruptedException {
+        ExtentReportUtils.createTestReport("VendorRegistration_test","positive_test1");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
         //Create objects
@@ -29,8 +30,11 @@ public class US09_TC01 {
         vendorRegistrationPage = new VendorRegistrationPage();
         //Click on register link
         homePage.register_Link.click();
+        ExtentReportUtils.pass("Registration link should be clickable");
         //Click on the Become a Vendor button
         homePage.signUp_BecomeVendorLink.click();
+        ExtentReportUtils.passAndCaptureScreenshot("User is on vendor registration page");
+
         //Enter your email in the Email field
 
         WaitUtils.waitForPageToLoad(5);
@@ -42,7 +46,6 @@ public class US09_TC01 {
 
         //get window handle of vendor registration page
         String vendorHandle = Driver.getDriver().getWindowHandle();
-        LoggerUtils.info("Vendor Registration Handle saved");
 
         //fakeMailHandle will be set later
         String fakeMailHandle = null;
@@ -51,7 +54,6 @@ public class US09_TC01 {
         //switch to a new tab
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);
         Driver.getDriver().get("https://fakemail.net");
-        LoggerUtils.info("Switched to fake mail site");
 
         WaitUtils.waitForPageToLoad(10);
 
@@ -98,8 +100,6 @@ public class US09_TC01 {
             System.out.println(e.getMessage());
         }
 
-        LoggerUtils.info("Fake mail site popup closed");
-
         WaitUtils.waitFor(1);
 
         //locate the email field from fake mail
@@ -107,14 +107,11 @@ public class US09_TC01 {
         WebElement generatedEmailEl = Driver.getDriver().findElement(By.cssSelector(".animace"));
         String generatedEmail = generatedEmailEl.getText();
 
-        LoggerUtils.info("Fake mail generated email saved...");
-
         Driver.getDriver().switchTo().window(vendorHandle);
-
-        LoggerUtils.info("Entering credentials and waiting for code verification message");
 
         //Enter email address in email field
         vendorRegistrationPage.vendorRegister_Email.sendKeys(generatedEmail);
+
 
         //Enter password in password field
         vendorRegistrationPage.vendorPassword.sendKeys("Winter12.");
@@ -130,15 +127,14 @@ public class US09_TC01 {
         //assert that the verification message has appeared
         WaitUtils.waitForVisibility(verificationMessage, 15);
         Assert.assertTrue(verificationMessage.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("the verification message has appeared");
 
         //switch to fake mail again
-        LoggerUtils.info("Code verification message displayed. Navigating back to fake mail to check inbox...");
         Driver.getDriver().switchTo().window(fakeMailHandle);
 
         WaitUtils.waitFor(10);
 
         //Then locate the top most row of incoming mails
-        LoggerUtils.info("Waiting for new inbox to arrive with verification code...");
         WebElement incomingMailFirstRow = Driver.getDriver().findElement(By.xpath(
                 "//tr[contains(@class, 'hidden-lg') and contains(@class, 'newMail')][1]"
         ));
@@ -151,14 +147,13 @@ public class US09_TC01 {
 
 
         //go into iframe
-        LoggerUtils.info("Moving inside of iframe to locate the verification code...");
 
         WebElement iframeEl = Driver.getDriver().findElement(By.cssSelector("#iframeMail"));
         BrowserUtils.switchToIframeByWebElement(iframeEl);
 
         //locate the verification code in the mail
         WebElement locateVerificationCode = Driver.getDriver().findElement(By.cssSelector("#body_content_inner b"));
-        LoggerUtils.info("Verification Code located...");
+
         System.out.println(locateVerificationCode.getText());
         WaitUtils.waitForVisibility(locateVerificationCode, 15);
 
@@ -182,37 +177,37 @@ public class US09_TC01 {
         WebElement successMessage = Driver.getDriver().findElement(By.cssSelector(".wcfm-message.wcfm-success"));
         WaitUtils.waitForVisibility(successMessage, 10);
 
-        LoggerUtils.info("Verification Code accepted...");
-
         Assert.assertTrue(successMessage.isDisplayed());
-        LoggerUtils.info("Vendor is successfully registered...");
+
 
         // Click on the "NOT RIGHT NOW " button
         vendorStoreSetUp = new VendorStoreSetUp();
         vendorStoreSetUp.notRightNowButton.click();
         //Verify that "Welcome to the Allover Commerce Dashboard" message is visible
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("Welcome to the Allover Commerce Dashboard message is visible");
         vendorStoreManager = new VendorStoreManager();
         BrowserUtils.verifyElementDisplayed(vendorStoreManager.WelcomeAlloverCommerceMessage);
+
 
         //Click on the LogOut Button
         JSUtils.JSscrollIntoView(vendorStoreManager.LogOutButton);
         WaitUtils.waitFor(1);
         vendorStoreManager.LogOutButton.click();
 
-        LoggerUtils.info("End Test.");
+       ExtentReportUtils.flush();
         Thread.sleep(5000);
         Driver.closeDriver();
 
     }
         @Test
         public void VendorRegistrationPositiveTest2() throws InterruptedException {
+            ExtentReportUtils.createTestReport("vendor_registration_test","positive_test2");
             //Go to home page
             Driver.getDriver().get("https://allovercommerce.com/");
             //Create objects
             homePage = new HomePage();
             vendorRegistrationPage = new VendorRegistrationPage();
-            vendorStoreManager = new VendorStoreManager();
-            vendorStoreSetUp = new VendorStoreSetUp();
 
             //Click on register link
             homePage.register_Link.click();
@@ -226,8 +221,8 @@ public class US09_TC01 {
             vendorRegistrationPage.vendorPassword.sendKeys("Summer12*");
             //Enter  same password in the password field
             vendorRegistrationPage.vendorConfirmPassword.sendKeys("Summer12*");
-            //Click on again the register button
-            //  JSclickWithTimeout(vendorRegistrationPage.registerButton);
+            //Click on  the register button
+
             JSUtils.JSscrollIntoView(vendorRegistrationPage.registerButton);
             WaitUtils.waitFor(1);
             vendorRegistrationPage.registerButton.click();
@@ -235,11 +230,16 @@ public class US09_TC01 {
             vendorRegistrationPage.registerButton.click();
 
             //Verify that "This Email already exists. Please login to the site and apply as vendor." message is visible
+            JSUtils.JSscrollIntoView(vendorRegistrationPage.thisEmailAlreadyExistMessage);
 
             Assert.assertEquals(vendorRegistrationPage.thisEmailAlreadyExistMessage.getText(),
                     "This Email already exists. Please login to the site and apply as vendor.");
+            WaitUtils.waitFor(2);
+            ExtentReportUtils.passAndCaptureScreenshot("'This Email already exists. Please login to the site and apply as vendor.' message is visible");
+
 
             Thread. sleep(5000);
+            ExtentReportUtils.flush();
             Driver.closeDriver();
 
 

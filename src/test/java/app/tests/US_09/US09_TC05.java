@@ -16,7 +16,8 @@ public class US09_TC05 {
     HomePage homePage;
     VendorRegistrationPage vendorRegistrationPage;
     @Test
-    public void test05(){
+    public void test05() throws InterruptedException {
+        ExtentReportUtils.createTestReport("confirm_password_test","fifth_test");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
         //Create objects
@@ -46,7 +47,7 @@ public class US09_TC05 {
         //switch to a new tab
         Driver.getDriver().switchTo().newWindow(WindowType.TAB);
         Driver.getDriver().get("https://fakemail.net");
-        LoggerUtils.info("Switched to fake mail site");
+
 
         WaitUtils.waitForPageToLoad(10);
 
@@ -93,7 +94,6 @@ public class US09_TC05 {
             System.out.println(e.getMessage());
         }
 
-        LoggerUtils.info("Fake mail site popup closed");
 
         WaitUtils.waitFor(1);
 
@@ -102,11 +102,8 @@ public class US09_TC05 {
         WebElement generatedEmailEl = Driver.getDriver().findElement(By.cssSelector(".animace"));
         String generatedEmail = generatedEmailEl.getText();
 
-        LoggerUtils.info("Fake mail generated email saved...");
-
         Driver.getDriver().switchTo().window(vendorHandle);
 
-        LoggerUtils.info("Entering credentials and waiting for code verification message");
 
         //Enter email address in email field
         vendorRegistrationPage.vendorRegister_Email.sendKeys(generatedEmail);
@@ -121,13 +118,13 @@ public class US09_TC05 {
         ));
 
         //switch to fake mail again
-        LoggerUtils.info("Code verification message displayed. Navigating back to fake mail to check inbox...");
+
         Driver.getDriver().switchTo().window(fakeMailHandle);
 
         WaitUtils.waitFor(10);
 
         //Then locate the top most row of incoming mails
-        LoggerUtils.info("Waiting for new inbox to arrive with verification code...");
+
         WebElement incomingMailFirstRow = Driver.getDriver().findElement(By.xpath(
                 "//tr[contains(@class, 'hidden-lg') and contains(@class, 'newMail')][1]"
         ));
@@ -140,14 +137,13 @@ public class US09_TC05 {
 
 
         //go into iframe
-        LoggerUtils.info("Moving inside of iframe to locate the verification code...");
 
         WebElement iframeEl = Driver.getDriver().findElement(By.cssSelector("#iframeMail"));
         BrowserUtils.switchToIframeByWebElement(iframeEl);
 
         //locate the verification code in the mail
         WebElement locateVerificationCode = Driver.getDriver().findElement(By.cssSelector("#body_content_inner b"));
-        LoggerUtils.info("Verification Code located...");
+
         System.out.println(locateVerificationCode.getText());
         WaitUtils.waitForVisibility(locateVerificationCode, 15);
 
@@ -166,8 +162,16 @@ public class US09_TC05 {
         JSUtils.JSscrollIntoView(vendorRegistrationPage.registerButton);
         WaitUtils.waitFor(1);
         vendorRegistrationPage.registerButton.click();
+
         //Verify that the registration process doesn't complete
+        JSUtils.JSscrollIntoView(vendorRegistrationPage.confirmPasswordIsRequired);
+
         Assert.assertTrue(vendorRegistrationPage.confirmPasswordIsRequired.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("the registration process doesn't complete");
+
+        ExtentReportUtils.flush();
+        Thread. sleep(5000);
+        Driver.closeDriver();
 
 
 

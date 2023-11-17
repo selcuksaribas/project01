@@ -2,6 +2,7 @@ package app.tests.US_10;
 
 import app.pages.VendorRegistrationPage;
 import app.utilities.Driver;
+import app.utilities.ExtentReportUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -15,6 +16,7 @@ public class US10_TC04 {
     VendorRegistrationPage vendorRegistrationPage;
     @Test
     public void tc04() throws IOException {
+        ExtentReportUtils.createTestReport("password_strength_test","fourth_test");
 
         base = new Base();
         vendorRegistrationPage = new VendorRegistrationPage();
@@ -27,9 +29,11 @@ public class US10_TC04 {
                 vendorRegistrationPage.vendorPasswordStrength.getText(),
                 "Strong"
         );
+        ExtentReportUtils.passAndCaptureScreenshot("Strong message is visible");
 
         base.clearPasswordField();
         WaitUtils.waitFor(1);
+        ExtentReportUtils.flush();
     }
     @AfterClass
     public static void tearUp() {

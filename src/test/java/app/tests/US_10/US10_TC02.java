@@ -3,6 +3,7 @@ package app.tests.US_10;
 import app.pages.VendorRegistrationPage;
 
 import app.utilities.Driver;
+import app.utilities.ExtentReportUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -17,6 +18,7 @@ public class US10_TC02 {
    VendorRegistrationPage vendorRegistrationPage;
     @Test
     public void tc02() throws IOException {
+        ExtentReportUtils.createTestReport("password_strength_test","second_test");
 
         base = new Base();
         vendorRegistrationPage = new VendorRegistrationPage();
@@ -29,9 +31,11 @@ public class US10_TC02 {
                 vendorRegistrationPage.vendorPasswordStrength.getText(),
                 "Weak"
         );
+        ExtentReportUtils.passAndCaptureScreenshot("Weak message is visible");
 
         base.clearPasswordField();
         WaitUtils.waitFor(1);
+        ExtentReportUtils.flush();
     }
 
     @AfterClass

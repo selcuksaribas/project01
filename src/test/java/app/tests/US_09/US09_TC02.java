@@ -16,6 +16,7 @@ public class US09_TC02 {
 
     @Test
     public void verificationCodeNegativeTest() throws InterruptedException {
+        ExtentReportUtils.createTestReport("verification_code_test","second_test");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
         //Create objects
@@ -36,17 +37,23 @@ public class US09_TC02 {
         //Verify that "Verification code sent to your email: abc@gmail.com." message is visible
         WaitUtils.waitForPageToLoad(4);
         Assert.assertTrue(vendorRegistrationPage.verificationCode.isDisplayed());
-
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("'Verification code sent to your email: abc@gmail.com' message is visible");
         //Click on the Register Button
         JSclickWithTimeout(vendorRegistrationPage.registerButton);
+
         //Verify that the registration process doesn't complete
+        ExtentReportUtils.pass("the registration process doesn't complete");
+        ExtentReportUtils.pass("the registration process doesn't complete");
+
         JSUtils.JSscrollIntoView(vendorRegistrationPage.vendorRegistrationPageTitle);
         Assert.assertEquals(vendorRegistrationPage.vendorRegistrationPageTitle.getText(),
                 "Vendor Registration");
 
-        LoggerUtils.info("End Test.");
-        Thread.sleep(5000);
+        Thread. sleep(5000);
+        ExtentReportUtils.flush();
         Driver.closeDriver();
+
 
 
 
