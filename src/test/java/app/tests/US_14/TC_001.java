@@ -277,6 +277,7 @@ public class TC_001 {
         ExtentReportUtils.flush();
         Driver.closeDriver();
         Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 }
