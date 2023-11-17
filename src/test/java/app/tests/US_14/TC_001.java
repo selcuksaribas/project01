@@ -275,6 +275,7 @@ public class TC_001 {
         WaitUtils.waitFor(5);
         Assert.assertTrue(addProductsPage.publishedVerify.isDisplayed());
         ExtentReportUtils.flush();
+        Driver.closeDriver();
 
     }
 }
