@@ -233,4 +233,13 @@ public class BrowserUtils {
         List<String> list = new ArrayList<>(Driver.getDriver().getWindowHandles());
         Driver.getDriver().switchTo().window(list.get(windowIndex));
     }
+    //    IFRAME BY WEB ELEMENT
+    public static void switchIframeByWebElement(String xpath){
+        WebElement iframeElement = Driver.getDriver().findElement(By.xpath(xpath));
+        Driver.getDriver().switchTo().frame(iframeElement);
+    }
+
+    public static void switchToIframeByWebElement(WebElement element) {
+        Driver.getDriver().switchTo().frame(element);
+    }
 }

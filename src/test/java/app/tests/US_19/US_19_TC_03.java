@@ -12,16 +12,19 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class US_19_TC_03 {
-    Homepage homepage = new Homepage();
-    ProductPage productPage = new ProductPage();
-    CartPage cartPage = new CartPage();
-    CheckoutPage checkoutPage = new CheckoutPage();
-    Actions actions = new Actions(Driver.getDriver());
+
     @Test
     public void US_19_TC_03(){
+        Homepage homepage = new Homepage();
+        ProductPage productPage = new ProductPage();
+        CartPage cartPage = new CartPage();
+        CheckoutPage checkoutPage = new CheckoutPage();
+        Actions actions = new Actions(Driver.getDriver());
+        ExtentReportUtils.createTestReport("US_19_TC_03","Leave the address area blank");
+        WaitUtils.waitFor(2);
 //        Sign in as a user
         Driver.getDriver().get("https://www.allovercommerce.com");
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(10);
         homepage.signInOption.click();
         homepage.emailOrUsername.sendKeys("selcuk.testng@gmail.com");
         homepage.password.sendKeys("selcuk.testng");
@@ -70,6 +73,7 @@ public class US_19_TC_03 {
         String actualQuantityValue = cartPage.productQuantity.getAttribute("value");
         String totalValue = String.valueOf(increaseNumber-decreaseNumber+1);
         Assert.assertEquals(actualQuantityValue, totalValue,"Quantity Value is not as expected");
+        ExtentReportUtils.passAndCaptureScreenshot("User has 2 item in the cart");
 
 //        Enter the shipping address and click on “update totals” button
         BrowserUtils.dropdownSelectByValue(cartPage.countryDropdown, "TR");
@@ -95,6 +99,7 @@ public class US_19_TC_03 {
         checkoutPage.couponCodeBox.sendKeys("112233");
         checkoutPage.applyCouponButton.click();
         WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters coupon successfully");
 
 //        Enter the first_name and last_name
         checkoutPage.firstName.clear();
@@ -135,6 +140,7 @@ public class US_19_TC_03 {
 
 //        Assert the process is failed
         Assert.assertTrue(checkoutPage.alertTownCityRequired.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("User can not complete shopping successfully");
 
 //        I added signout option since next testcase starts with signin codes
         ActionsUtil.actionsScrollUp();
@@ -146,5 +152,6 @@ public class US_19_TC_03 {
 
 //        Close the driver
         Driver.closeDriver();
+        ExtentReportUtils.flush();
     }
 }
