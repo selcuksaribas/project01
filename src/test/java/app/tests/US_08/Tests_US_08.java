@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 //      remove properties and use username and password inside the class (high priority)
 //      sign out may need (low priority)
 //      for parallel testing, tests may need priority or grouping Because first TC_01 done then the other should come (low priority)
-//
 
 public class Tests_US_08 {
 //1- User should navigate to "https://allovercommerce.com/"
