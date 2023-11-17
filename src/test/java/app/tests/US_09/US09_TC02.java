@@ -11,17 +11,16 @@ import org.testng.annotations.Test;
 import static app.utilities.JSUtils.JSclickWithTimeout;
 
 public class US09_TC02 {
-    HomePage homePage;
-    VendorRegistrationPage vendorRegistrationPage;
+
 
     @Test
     public void verificationCodeNegativeTest() throws InterruptedException {
         ExtentReportUtils.createTestReport("verification_code_test","second_test");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
-        //Create objects
-        homePage = new HomePage();
-        vendorRegistrationPage = new VendorRegistrationPage();
+
+       HomePage homePage = new HomePage();
+       VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
         //Click on register link
         homePage.register_Link.click();
         //Click on the Become a Vendor button

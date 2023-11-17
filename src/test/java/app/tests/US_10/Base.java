@@ -12,13 +12,13 @@ import org.openqa.selenium.WebElement;
 
 
 public class Base {
-   VendorRegistrationPage vendorRegistrationPage;
+
     public void repeat(String pass) {
         Driver.getDriver().get("https://allovercommerce.com/vendor-register/");
         WaitUtils.waitForPageToLoad(15);
 
         //vendor object
-        vendorRegistrationPage = new VendorRegistrationPage();
+      VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
 
         //Scroll to breadcrumb
 

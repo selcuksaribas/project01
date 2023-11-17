@@ -16,18 +16,19 @@ import java.util.Set;
 
 public class   US09_TC01 {
 
-    HomePage homePage;
-    VendorRegistrationPage vendorRegistrationPage;
-    VendorStoreSetUp vendorStoreSetUp;
-    VendorStoreManager vendorStoreManager;
+
     @Test
     public void VendorRegistrationPositiveTest1() throws InterruptedException {
+
+
         ExtentReportUtils.createTestReport("VendorRegistration_test","positive_test1");
         //Go to home page
         Driver.getDriver().get("https://allovercommerce.com/");
-        //Create objects
-        homePage = new HomePage();
-        vendorRegistrationPage = new VendorRegistrationPage();
+
+        HomePage homePage = new HomePage();
+        VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
+        VendorStoreSetUp vendorStoreSetUp = new VendorStoreSetUp();
+        VendorStoreManager   vendorStoreManager = new VendorStoreManager();
         //Click on register link
         homePage.register_Link.click();
         ExtentReportUtils.pass("Registration link should be clickable");
@@ -181,12 +182,12 @@ public class   US09_TC01 {
 
 
         // Click on the "NOT RIGHT NOW " button
-        vendorStoreSetUp = new VendorStoreSetUp();
+
         vendorStoreSetUp.notRightNowButton.click();
         //Verify that "Welcome to the Allover Commerce Dashboard" message is visible
         WaitUtils.waitFor(2);
         ExtentReportUtils.passAndCaptureScreenshot("Welcome to the Allover Commerce Dashboard message is visible");
-        vendorStoreManager = new VendorStoreManager();
+
         BrowserUtils.verifyElementDisplayed(vendorStoreManager.WelcomeAlloverCommerceMessage);
 
 
@@ -202,12 +203,13 @@ public class   US09_TC01 {
     }
         @Test
         public void VendorRegistrationPositiveTest2() throws InterruptedException {
+
             ExtentReportUtils.createTestReport("vendor_registration_test","positive_test2");
             //Go to home page
             Driver.getDriver().get("https://allovercommerce.com/");
-            //Create objects
-            homePage = new HomePage();
-            vendorRegistrationPage = new VendorRegistrationPage();
+
+           HomePage homePage = new HomePage();
+           VendorRegistrationPage  vendorRegistrationPage = new VendorRegistrationPage();
 
             //Click on register link
             homePage.register_Link.click();

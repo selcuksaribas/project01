@@ -13,14 +13,13 @@ import java.io.IOException;
 
 public class US10_TC03 {
 
-    Base base;
-    VendorRegistrationPage vendorRegistrationPage;
+
     @Test
     public void tc03() throws IOException {
         ExtentReportUtils.createTestReport("password_strength_test","third_test");
 
-        base = new Base();
-        vendorRegistrationPage = new VendorRegistrationPage();
+       Base base = new Base();
+       VendorRegistrationPage vendorRegistrationPage = new VendorRegistrationPage();
         base.repeat("Sun12.");
 
         base.checkInputField();
