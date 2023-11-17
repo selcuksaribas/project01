@@ -49,4 +49,11 @@ public class ActionsUtil {
         //        Actions actions = new Actions(driver);
         new Actions(Driver.getDriver()).sendKeys(Keys.TAB).build().perform();
     }
+    //zoom out
+    public  static void  actionZoomOut(){
+        new Actions(Driver.getDriver()).keyDown(Keys.CONTROL).sendKeys(Keys.PAGE_DOWN).keyUp(Keys.CONTROL).perform();
+
+
+                //actions.keyDown(Keys.CONTROL).sendKeys(body, Keys.SUBTRACT).keyUp(Keys.CONTROL).perform();
+    }
 }

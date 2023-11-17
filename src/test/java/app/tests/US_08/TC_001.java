@@ -1,4 +1,4 @@
-package app.tests.us_08;
+package app.tests.US_08;
 
 import app.pages.HomePageHalil;
 import app.utilities.*;
@@ -27,9 +27,13 @@ public class TC_001 {
         //option2
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
 
+////        ////ZOOM OUT
+//        ActionsUtil.actionZoomOut();
+//        /////
         //get the page title
         String title = Driver.getDriver().getTitle();
         Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
+
 
     //2- User clicks on the Sign-in button at home page
         //Create page object for HomePage
@@ -47,6 +51,8 @@ public class TC_001 {
         homePageHalil.signInButton.click();
         //wait may need if the internet connection is slow or website is slow
         Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+
+
     //7- User clicks on to the 'search box'
         homePageHalil.searchBox.click();
     //8- User enter a product name ==> apple

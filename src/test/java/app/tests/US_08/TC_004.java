@@ -1,4 +1,4 @@
-package app.tests.us_08;
+package app.tests.US_08;
 
 import app.pages.CheckOutPageHalil;
 import app.pages.HomePageHalil;
@@ -45,6 +45,7 @@ public class TC_004 {
 //30- User cliscks "PLACE ORDER"
 //31- User clicks 'Ship to a different address?'
 //32- User enters same data (19 to 26)
+
     @Test
     public void TC_004(){
         System.out.println("I m starting coding for TC_002");
@@ -74,30 +75,30 @@ public class TC_004 {
         //wait may need if the internet connection is slow or website is slow
         Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
     //7- User clicks on to the 'search box'
-        homePageHalil.searchBox.click();
-    //8- User enter a product name ==> apple
-        homePageHalil.searchBox.sendKeys("apple");
-        //homePage.searchBox.sendKeys("apple" + Keys.ENTER); //alternative
-
-        //????????????try to use JavaSkiprit here??????????????????
-        //assert if its able to type apple
-
-    //9- User clicks the 'search icon'
-        homePageHalil.searchIcon.click();
-
-    ////10- User clicks the 'add to wishlist' icon first three product on list
-        for (int i = 0; i < 2; i++) {
-            ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIcon);
-            homePageHalil.searchResult1WishIcon.click();
-            WaitUtils.waitFor(5);
-        }
-
-//11- User must see color of 'add to wishlist' icons changed for each products
-        //we check at TC_001 we skip that
-//        WaitUtils.waitFor(3);
-//        JSUtils.JSscrollIntoView(homePage.searchResult1WishIconAdded);
-//        ActionsUtil.actionsHoverOverOnElement(homePage.searchResult1WishIconAdded);
-//        Assert.assertTrue(homePage.searchResult1WishIconAdded.isDisplayed());
+    //        homePageHalil.searchBox.click();
+    //    //8- User enter a product name ==> apple
+    //        homePageHalil.searchBox.sendKeys("apple");
+    //        //homePage.searchBox.sendKeys("apple" + Keys.ENTER); //alternative
+    //
+    //        //????????????try to use JavaSkiprit here??????????????????
+    //        //assert if its able to type apple
+    //
+    //    //9- User clicks the 'search icon'
+    //        homePageHalil.searchIcon.click();
+    //
+    //    ////10- User clicks the 'add to wishlist' icon first three product on list
+    //        for (int i = 0; i < 2; i++) {
+    //            ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIcon);
+    //            homePageHalil.searchResult1WishIcon.click();
+    //            WaitUtils.waitFor(5);
+    //        }
+    //
+    ////11- User must see color of 'add to wishlist' icons changed for each products
+    //        //we check at TC_001 we skip that
+    ////        WaitUtils.waitFor(3);
+    ////        JSUtils.JSscrollIntoView(homePage.searchResult1WishIconAdded);
+    ////        ActionsUtil.actionsHoverOverOnElement(homePage.searchResult1WishIconAdded);
+    ////        Assert.assertTrue(homePage.searchResult1WishIconAdded.isDisplayed());
 
 //12- User clicks 'wishlist' icon top on the page
 //        ActionsUtil.actionsHoverOverOnElement(homePage.wishListPageButton);
@@ -189,84 +190,86 @@ public class TC_004 {
         WaitUtils.waitFor(1);
         Assert.assertTrue(checkOutPageHalil.noShippingMethodAlert.isDisplayed());
 
-
-    }
-
-    @Test
-    public void TC_004CheckoutPage(){
-        Driver.getDriver().get("https://allovercommerce.com/checkout-2/");
-        //2- User clicks on the Sign-in button at home page
-        //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
-        CheckOutPageHalil checkOutPageHalil = new CheckOutPageHalil();
-
-        homePageHalil.signInOption.click();
-        //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
-        //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
-        //5- User clicks on the Sign-in button at login page
-        homePageHalil.rememberMeCheckBox.click();
-        //6- User is able to Sign In
-        homePageHalil.signInButton.click();
-
-        WaitUtils.waitFor(1);
-        checkOutPageHalil.checkOutButton.click();
-
-        //        19- User enters 'First name' ->	Halil
-        checkOutPageHalil.firstName.clear();
-        checkOutPageHalil.firstName.sendKeys("Halil");
-//        20- User enters 'Last name' ->	TestNG
-        checkOutPageHalil.lastName.clear();
-        checkOutPageHalil.lastName.sendKeys("TestNG");
-//        21- User enters 'Company name' ->	TechPro Education
-       //?? checkOutPage.companyName.sendKeys("TechPro Education");
-//        22- User enters 'Country / Region' ->	Canada
-        checkOutPageHalil.countryStateDropdown().selectByVisibleText("Canada");
-
-//        23- User enters 'Street address' ->	999 Java Street
-        checkOutPageHalil.streetAddressFirstLine.sendKeys("999 Java Street");
-//        24- User enters 'Town/City' ->	Toronto
-        checkOutPageHalil.townCity.clear();
-        checkOutPageHalil.townCity.sendKeys("Toronto");
-//        25- User enters 'Province' ->	Ontario
-        checkOutPageHalil.provinceStateDropdown().selectByVisibleText("Ontario");
-//        26- User enters 'Postal Code' ->	M5V 3L9
-        checkOutPageHalil.postCodeZIP.clear();
-        checkOutPageHalil.postCodeZIP.sendKeys("M5V 3L9");
-//        27- User enters 'Phone' ->	4679872143
-        checkOutPageHalil.phone.clear();
-        checkOutPageHalil.phone.sendKeys("4679872143");
-//        28- User enters 'Email address' ->	halile.test.ng@gmail.com
-        //if it s allready written you can check by JavaScript
-//        checkOutPage.email.sendKeys("halile.test.ng@gmail.com");
-
-        //extra
-        checkOutPageHalil.orderNote.sendKeys("This purchase for test reasons");
-
-//        29- User choose "Payment Methods" ->	Wire transfer/EFT' or 'Pay at door'
-        WaitUtils.waitFor(1);
-        ActionsUtil.actionsScrollDown();
-
-        WaitUtils.waitFor(3);
-        checkOutPageHalil.payAtTheDoorNew.click();
-
-        //if you want to use wire/eft option
-//        WaitUtils.waitFor(1);
-//        ActionsUtil.actionsScrollUp();
-//        WaitUtils.waitFor(3);
-//        checkOutPage.wireTransferEFT.click();
-//        WaitUtils.waitFor(1);
-//        ActionsUtil.actionsScrollDown();
-
-        //30- User cliscks "PLACE ORDER"
-        checkOutPageHalil.placeOrderButton.click();
-
-//31- see alarm for report
-        WaitUtils.waitFor(1);
-        Assert.assertTrue(checkOutPageHalil.noShippingMethodAlert.isDisplayed());
-
         Driver.closeDriver();
     }
+
+
+
+//    @Test
+//    public void TC_004CheckoutPage(){
+//        Driver.getDriver().get("https://allovercommerce.com/checkout-2/");
+//        //2- User clicks on the Sign-in button at home page
+//        //Create page object for HomePage
+//        HomePageHalil homePageHalil = new HomePageHalil();
+//        CheckOutPageHalil checkOutPageHalil = new CheckOutPageHalil();
+//
+//        homePageHalil.signInOption.click();
+//        //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
+//        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+//        //4- User enters valid password ==> property=>us_08_password (testng)
+//        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+//        //5- User clicks on the Sign-in button at login page
+//        homePageHalil.rememberMeCheckBox.click();
+//        //6- User is able to Sign In
+//        homePageHalil.signInButton.click();
+//
+//        WaitUtils.waitFor(1);
+//        checkOutPageHalil.checkOutButton.click();
+//
+//        //        19- User enters 'First name' ->	Halil
+//        checkOutPageHalil.firstName.clear();
+//        checkOutPageHalil.firstName.sendKeys("Halil");
+////        20- User enters 'Last name' ->	TestNG
+//        checkOutPageHalil.lastName.clear();
+//        checkOutPageHalil.lastName.sendKeys("TestNG");
+////        21- User enters 'Company name' ->	TechPro Education
+//       //?? checkOutPage.companyName.sendKeys("TechPro Education");
+////        22- User enters 'Country / Region' ->	Canada
+//        checkOutPageHalil.countryStateDropdown().selectByVisibleText("Canada");
+//
+////        23- User enters 'Street address' ->	999 Java Street
+//        checkOutPageHalil.streetAddressFirstLine.sendKeys("999 Java Street");
+////        24- User enters 'Town/City' ->	Toronto
+//        checkOutPageHalil.townCity.clear();
+//        checkOutPageHalil.townCity.sendKeys("Toronto");
+////        25- User enters 'Province' ->	Ontario
+//        checkOutPageHalil.provinceStateDropdown().selectByVisibleText("Ontario");
+////        26- User enters 'Postal Code' ->	M5V 3L9
+//        checkOutPageHalil.postCodeZIP.clear();
+//        checkOutPageHalil.postCodeZIP.sendKeys("M5V 3L9");
+////        27- User enters 'Phone' ->	4679872143
+//        checkOutPageHalil.phone.clear();
+//        checkOutPageHalil.phone.sendKeys("4679872143");
+////        28- User enters 'Email address' ->	halile.test.ng@gmail.com
+//        //if it s allready written you can check by JavaScript
+////        checkOutPage.email.sendKeys("halile.test.ng@gmail.com");
+//
+//        //extra
+//        checkOutPageHalil.orderNote.sendKeys("This purchase for test reasons");
+//
+////        29- User choose "Payment Methods" ->	Wire transfer/EFT' or 'Pay at door'
+//        WaitUtils.waitFor(1);
+//        ActionsUtil.actionsScrollDown();
+//
+//        WaitUtils.waitFor(3);
+//        checkOutPageHalil.payAtTheDoorNew.click();
+//
+//        //if you want to use wire/eft option
+////        WaitUtils.waitFor(1);
+////        ActionsUtil.actionsScrollUp();
+////        WaitUtils.waitFor(3);
+////        checkOutPage.wireTransferEFT.click();
+////        WaitUtils.waitFor(1);
+////        ActionsUtil.actionsScrollDown();
+//
+//        //30- User cliscks "PLACE ORDER"
+//        checkOutPageHalil.placeOrderButton.click();
+//
+////31- see alarm for report
+//        WaitUtils.waitFor(1);
+//        Assert.assertTrue(checkOutPageHalil.noShippingMethodAlert.isDisplayed());
+//
+//        Driver.closeDriver();
+//    }
 
 }

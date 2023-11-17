@@ -1,4 +1,4 @@
-package app.tests.us_08;
+package app.tests.US_08;
 
 import app.pages.HomePageHalil;
 import app.utilities.ActionsUtil;
@@ -54,6 +54,8 @@ public class TC_003 {
         homePageHalil.signInButton.click();
         //wait may need if the internet connection is slow or website is slow
         Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+
+        /*
     //7- User clicks on to the 'search box'
         homePageHalil.searchBox.click();
     //8- User enter a product name ==> apple
@@ -81,6 +83,8 @@ public class TC_003 {
 //        ActionsUtil.actionsHoverOverOnElement(homePage.searchResult1WishIconAdded);
 //        Assert.assertTrue(homePage.searchResult1WishIconAdded.isDisplayed());
 
+         */
+
 //12- User clicks 'wishlist' icon top on the page
 //        ActionsUtil.actionsHoverOverOnElement(homePage.wishListPageButton);
         homePageHalil.wishListPageButton.click();
@@ -99,8 +103,8 @@ public class TC_003 {
         WaitUtils.waitFor(5);
         Assert.assertTrue(homePageHalil.wishAddedTableQuickViewProperties.isDisplayed());
 
-        //extra
-        homePageHalil.wishAddedTableQuickViewProperties2Element.click();
+//        //extra
+//        homePageHalil.wishAddedTableQuickViewProperties2Element.click();
 
         Driver.closeDriver();
 

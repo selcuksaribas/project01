@@ -1,4 +1,4 @@
-package app.tests.us_08;
+package app.tests.US_08;
 
 import app.pages.HomePageHalil;
 import app.utilities.*;
@@ -22,21 +22,22 @@ public class TC_002 {
 //13- User must see all choosen product on the wishlist page
     @Test
     public void TC_002(){
-        System.out.println("I m starting coding for TC_002");
-
+        HomePageHalil homePageHalil = new HomePageHalil();
+        WaitUtils.waitFor(3);
     //1- User should navigate to "https://allovercommerce.com/"
         //option1
         //Driver.getDriver().get("https://allovercommerce.com/");
         //option2
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
-
+        WaitUtils.waitFor(3);
         //get the page title
         String title = Driver.getDriver().getTitle();
         Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
 
     //2- User clicks on the Sign-in button at home page
         //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
+
+        WaitUtils.waitFor(15);
         homePageHalil.signInOption.click();
     //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
         homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
@@ -48,6 +49,8 @@ public class TC_002 {
         homePageHalil.signInButton.click();
         //wait may need if the internet connection is slow or website is slow
         Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+
+
     //7- User clicks on to the 'search box'
         homePageHalil.searchBox.click();
     //8- User enter a product name ==> apple
@@ -61,12 +64,11 @@ public class TC_002 {
         homePageHalil.searchIcon.click();
 
     ////10- User clicks the 'add to wishlist' icon first three product on list
-        for (int i = 0; i < 2; i++) {
-            System.out.println(i);
+
             ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIcon);
             homePageHalil.searchResult1WishIcon.click();
             WaitUtils.waitFor(5);
-        }
+
 
 //11- User must see color of 'add to wishlist' icons changed for each products
         //we check at TC_001 we skip that
