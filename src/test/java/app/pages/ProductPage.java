@@ -7,6 +7,18 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage {
 
+    public ProductPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
+    @FindBy(xpath = "//button[@name='add-to-cart']") public WebElement addToCartButton;
+    @FindBy(xpath = "//div[@class='woocommerce-message alert alert-simple alert-btn alert-success']")public WebElement productAddedSuccessAlert;
+    @FindBy(xpath = "//a[@class='cart-toggle']")public WebElement cartIcon;
+    @FindBy(xpath = "//a[contains(text(),'View cart')]") public WebElement viewCartButton;
+    @FindBy(xpath = "//a[@class='remove remove_from_cart_button']")public WebElement removeFromCartButton;
+    @FindBy(partialLinkText = "Close")public WebElement closeCartIconWindow;
+}
+
+
 
     public ProductPage() {
         PageFactory.initElements(Driver.getDriver(), this);
