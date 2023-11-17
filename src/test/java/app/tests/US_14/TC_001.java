@@ -276,6 +276,8 @@ public class TC_001 {
         Assert.assertTrue(addProductsPage.publishedVerify.isDisplayed());
         ExtentReportUtils.flush();
         Driver.closeDriver();
+        Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 }
