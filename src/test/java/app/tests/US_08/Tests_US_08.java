@@ -28,6 +28,9 @@ public class Tests_US_08 {
 //9- User clicks the 'search icon'
 //10- User clicks the 'add to wishlist' icon first product on list
 //11- User must see color of 'add to wishlist' icon changed
+
+    //hange
+
     @Test
     public void TC_01(){
         //Create page object for HomePage
