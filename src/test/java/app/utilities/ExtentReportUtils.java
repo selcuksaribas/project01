@@ -28,12 +28,11 @@ public class ExtentReportUtils {
 //        Create extent report
         extentReports = new ExtentReports();
 //        ***********ADDING CUSTOM SYSTEM INFORMATION ***********
-        extentReports.setSystemInfo("Application Name","Apple M1 Unit");
+        extentReports.setSystemInfo("Application Name","Allcommerace");
         extentReports.setSystemInfo("Test Environment","Regression");
         extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Team Name","Eagles");
-        extentReports.setSystemInfo("SQA","Seren");
-        extentReports.setSystemInfo("Feature Number","FE1056");
+        extentReports.setSystemInfo("Team Name","Team-01");
+        extentReports.setSystemInfo("SQA","Halil");
 //        ***********DOCUMENT INFORMATION************************
         extentSparkReporter.config().setReportName("My Regression Report");
         extentSparkReporter.config().setDocumentTitle("My Regression Extent Reports");

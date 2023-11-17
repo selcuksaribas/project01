@@ -19,7 +19,6 @@ public class ProductPage {
 }
 
 
-
     public ProductPage() {
         PageFactory.initElements(Driver.getDriver(), this);
 
@@ -45,4 +44,5 @@ public class ProductPage {
 
 
 }
+
 

@@ -33,6 +33,7 @@ public class CheckoutPage {
 
 
 
+
     @FindBy(id = "billing_first_name")
     public static WebElement firstName;
 
@@ -68,5 +69,6 @@ public class CheckoutPage {
 
     @FindBy(xpath = "//p[contains(text(), 'Thank you. Your order has been received.')]")
     public static WebElement orderReceivedSuccessfullyMessage;
+
 
 }
