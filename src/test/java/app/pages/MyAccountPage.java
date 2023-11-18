@@ -24,4 +24,5 @@ public class MyAccountPage {
     @FindBy(id = "account_first_name") public WebElement accountFirstNameButton;
     @FindBy(id = "account_last_name") public WebElement accountLastNameButton;
     @FindBy(xpath = "//*[text()='Address changed successfully.']") public WebElement billingAddressChangedSuccessfully;
+
 }

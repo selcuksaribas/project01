@@ -27,4 +27,5 @@ public class ReusableMethods {
         } catch (Exception ignored) {
         }
     }
+
 }

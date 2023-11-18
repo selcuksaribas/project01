@@ -59,4 +59,5 @@ public class AddProductPage {
     @FindBy(xpath = "//button[@data-taxonomy='product_brand']") public WebElement productAddButton;
     @FindBy(xpath = "//input[@name='submit-data']") public WebElement submitButton;
     @FindBy(xpath = "//*[text()='Published']") public WebElement publishedVerify;
+
 }

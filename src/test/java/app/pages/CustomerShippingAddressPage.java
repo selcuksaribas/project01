@@ -22,4 +22,5 @@ public class CustomerShippingAddressPage {
     @FindBy(id = "shipping_postcode") public WebElement shippingPostcodeInput;
     @FindBy(xpath = "//button[@value='Save address']") public WebElement saveAddressButton;
     @FindBy(xpath = "//*[@data-id='shipping_postcode']") public WebElement postCodeRequired;
+
 }

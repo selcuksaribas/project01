@@ -22,4 +22,5 @@ public class AddCouponPage {
     @FindBy(xpath = "(//*[@type='checkbox'])[2]") public WebElement showOnStore;
     @FindBy(xpath = "(//input[@type='submit'])[1]") public WebElement submit;
     @FindBy(xpath = "//*[@id=\"wcfm-coupons\"]/tbody/tr[1]/td[1]/a") public WebElement publishedCoupon;
+
 }

@@ -25,4 +25,5 @@ public class Homepage {
     @FindBy(xpath = "//div[@id='customer_login']//a[.='Sign Up']") public WebElement signUp_Tab;
     @FindBy(xpath = "//div[@id='customer_login']//a[.='Become a Vendor']") public WebElement signUp_BecomeVendorLink;
     @FindBy(xpath = "(//button[@type='submit'])[1]") public WebElement searchIcon;
+
 }

@@ -17,4 +17,5 @@ public class ProductPage {
     @FindBy(partialLinkText = "Close")public WebElement closeCartIconWindow;
     @FindBy(xpath = "(//input[@type='search'])[1]")public WebElement searchBox;
     @FindBy(linkText = "16 ” MacBook Pro") public WebElement macbook;
+
 }

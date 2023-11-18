@@ -26,4 +26,5 @@ public class CustomerBillingAddressPage {
     @FindBy(xpath = "//*[@data-id='billing_address_1']") public WebElement streetAddressRequired;
     @FindBy(xpath = "(//input)[3]") public WebElement firstNameAutomatically;
     @FindBy(xpath = "(//input[@class='input-text '])[2]") public WebElement lastNameAutomatically;
+
 }

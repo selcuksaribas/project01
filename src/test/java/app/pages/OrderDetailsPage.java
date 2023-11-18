@@ -12,4 +12,5 @@ public class OrderDetailsPage {
     @FindBy (xpath = "//*[@id=\"main\"]/div/div/div/div/div/div/div/section[1]/table/tfoot/tr[2]/th") public WebElement shippingDetails;
     @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div/div/section[1]/table/tfoot/tr[3]/th") public WebElement paymentDetails;
     @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/div/div/section[1]/table/tfoot/tr[4]/th") public WebElement total;
+
 }

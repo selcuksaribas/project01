@@ -10,4 +10,5 @@ public class VendorStoreSetUp {
         PageFactory.initElements(Driver.getDriver(),this);
     }
     @FindBy(xpath = "//a[@class='button button-large']")public WebElement notRightNowButton;
+
 }

@@ -27,4 +27,5 @@ public class VendorMyAccountPage {
     @FindBy(id="yith-wcwl-form") public WebElement wishlistGoShopWindow;
     @FindBy(xpath="//*[@id=\"main\"]/div/div/div/div/div/div/div/div[2]/table/thead/tr/th[3]/span") public WebElement supportTicketsCategory;
     @FindBy(xpath="//*[@id=\"main\"]/div/div/div/div/div/div/div/div[2]/table/thead/tr/th[3]/span") public WebElement followingsStore;
+
 }

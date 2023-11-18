@@ -34,7 +34,4 @@ public class CheckoutPage {
     @FindBy (xpath = "//*[@id=\"payment\"]/ul/li[2]/label") public WebElement payAtTheDoor;
     @FindBy (xpath = "//*[@id=\"order_review\"]/table/tfoot/tr[3]/td/strong/span") public WebElement totalAmount;
 
-
-
-
 }

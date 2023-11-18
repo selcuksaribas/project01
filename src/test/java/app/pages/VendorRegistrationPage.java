@@ -29,4 +29,5 @@ public class VendorRegistrationPage {
     @FindBy(xpath = "//div[@class='wcfm-message wcfm-error']") public WebElement thisEmailAlreadyExistMessage;
     @FindBy(xpath = "//h2[@class='page-title']") public WebElement  vendorRegistrationPageTitle;
     @FindBy(xpath = "//input[@class='wcfm-text wcfm_ele wcfm_validation_failed']") public WebElement confirmPasswordIsRequired;
+
 }

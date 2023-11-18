@@ -11,4 +11,5 @@ public class VendorStoreManager {
     }
     @FindBy(xpath = "//div[@class='wcfm_welcomebox_user_details rgt']")public WebElement WelcomeAlloverCommerceMessage;
     @FindBy(xpath = "//span[@class='wcfmfa fa-power-off']") public WebElement LogOutButton;
+
 }

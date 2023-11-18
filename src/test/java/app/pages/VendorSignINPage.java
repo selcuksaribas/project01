@@ -14,4 +14,5 @@ public class VendorSignINPage {
     @FindBy(id = "password") public WebElement passwordInput;
     @FindBy(id="menu-item-1079") public WebElement myAccount;
     @FindBy(name = "login") public WebElement signInButton;
+
 }

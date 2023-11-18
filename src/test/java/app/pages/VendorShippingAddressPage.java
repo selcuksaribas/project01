@@ -20,4 +20,5 @@ public class VendorShippingAddressPage {
     @FindBy(id = "select2-shipping_state-container") public WebElement provinceDropdown;
     @FindBy(xpath = "//input[@class='select2-search__field']") public WebElement provinceDropdownInput;
     @FindBy(xpath = "//button[@value='Save address']") public WebElement saveAddressButton;
+
 }
