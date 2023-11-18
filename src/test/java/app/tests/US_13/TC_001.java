@@ -4,6 +4,8 @@ import app.pages.HomePage;
 import app.pages.MyAccountPage;
 import app.pages.VendorShippingAddressesPage;
 import app.utilities.Driver;
+import app.utilities.ExtentReportUtils;
+import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -53,12 +55,15 @@ public class TC_001 {
     @Test
     public void TC_001(){
 
+        ExtentReportUtils.createTestReport("Allover_commerce_test","TC_001");
+
         HomePage homePage = new HomePage();
         MyAccountPage myAccountPage = new MyAccountPage();
         VendorShippingAddressesPage vendorShippingAddressesPage = new VendorShippingAddressesPage();
 
 //        User navigates to website
         Driver.getDriver().get("https://allovercommerce.com/");
+        ExtentReportUtils.passAndCaptureScreenshot("User is on the home page");
 
 //        User clicks on sign in button on home page
         homePage.signInOption.click();
@@ -71,6 +76,8 @@ public class TC_001 {
 
 //        User clicks on Sign in button on login page
         homePage.signInButton.click();
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("User signed in successfully");
 
 //        User clicks on Profile button
         homePage.signOutButton.click();
@@ -91,7 +98,7 @@ public class TC_001 {
 
 //        User enters Company name
         vendorShippingAddressesPage.companyNameInput.clear();
-        vendorShippingAddressesPage.companyNameInput.sendKeys("Callisia INC.");
+        vendorShippingAddressesPage.companyNameInput.sendKeys("Erkam INC.");
 
 //        User selects Country/Region
         vendorShippingAddressesPage.countryRegionDropdown.click();
@@ -113,29 +120,19 @@ public class TC_001 {
 //        User enters Postal code
         vendorShippingAddressesPage.postalCodeInput.clear();
         vendorShippingAddressesPage.postalCodeInput.sendKeys("A1A 1A1");
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("Credentials entered successfully");
 
 //        User clicks on Save Address button
-        vendorShippingAddressesPage.saveAddressButton.click();
+        JSUtils.JSclickWithTimeout(vendorShippingAddressesPage.saveAddressButton);
+        WaitUtils.waitFor(2);
+
 //        Verify "Address changed successfully" is visible
+        ExtentReportUtils.passAndCaptureScreenshot("Address changed successfully message is visible");
         Assert.assertTrue(Driver.getDriver().getPageSource().contains("Address changed successfully"));
+
+//        Close the driver
+        Driver.closeDriver();
+        ExtentReportUtils.flush();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
