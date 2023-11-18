@@ -1,7 +1,7 @@
 package app.tests.US_08;
 
-import app.pages.CheckOutPageHalil;
-import app.pages.HomePageHalil;
+import app.pageshalil.CheckOutPageHalil;
+import app.pageshalil.HomePageHalil;
 import app.utilities.ActionsUtil;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;

@@ -28,11 +28,12 @@ public class ExtentReportUtils {
 //        Create extent report
         extentReports = new ExtentReports();
 //        ***********ADDING CUSTOM SYSTEM INFORMATION ***********
-        extentReports.setSystemInfo("Application Name","Allcommerace");
+        extentReports.setSystemInfo("Application Name","Apple M1 Unit");
         extentReports.setSystemInfo("Test Environment","Regression");
         extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Team Name","Team-01");
-        extentReports.setSystemInfo("SQA","Halil");
+        extentReports.setSystemInfo("Team Name","Eagles");
+        extentReports.setSystemInfo("SQA","Seren");
+        extentReports.setSystemInfo("Feature Number","FE1056");
 //        ***********DOCUMENT INFORMATION************************
         extentSparkReporter.config().setReportName("My Regression Report");
         extentSparkReporter.config().setDocumentTitle("My Regression Extent Reports");
@@ -66,6 +67,15 @@ public class ExtentReportUtils {
         try {
             extentTest
                     .log(Status.PASS,message)
+                    .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void failAndCaptureScreenshot(String message)  {
+        try {
+            extentTest
+                    .log(Status.FAIL,message)
                     .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
         } catch (IOException e) {
             throw new RuntimeException(e);
