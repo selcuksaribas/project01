@@ -15,4 +15,6 @@ public class ProductPage {
     @FindBy(xpath = "//a[contains(text(),'View cart')]") public WebElement viewCartButton;
     @FindBy(xpath = "//a[@class='remove remove_from_cart_button']")public WebElement removeFromCartButton;
     @FindBy(partialLinkText = "Close")public WebElement closeCartIconWindow;
+    @FindBy(xpath = "(//input[@type='search'])[1]")public WebElement searchBox;
+    @FindBy(linkText = "16 ” MacBook Pro") public WebElement macbook;
 }
