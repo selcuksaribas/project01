@@ -2,7 +2,7 @@ package app.tests.US_19;
 
 import app.pages.CartPage;
 import app.pages.CheckoutPage;
-import app.pages.Homepage;
+import app.pages.HomePage;
 import app.pages.ProductPage;
 import app.utilities.*;
 import org.openqa.selenium.Keys;
@@ -15,7 +15,7 @@ public class US_19_TC_03 {
 
     @Test
     public void US_19_TC_03(){
-        Homepage homepage = new Homepage();
+        HomePage homepage = new HomePage();
         ProductPage productPage = new ProductPage();
         CartPage cartPage = new CartPage();
         CheckoutPage checkoutPage = new CheckoutPage();
