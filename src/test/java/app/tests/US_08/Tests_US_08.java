@@ -33,7 +33,6 @@ public class Tests_US_08 {
 //10- User clicks the 'add to wishlist' icon first product on list
 //11- User must see color of 'add to wishlist' icon changed
 
-    //hange
 
     @Test
     public void TC_01(){
