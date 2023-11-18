@@ -34,6 +34,25 @@ public class CheckoutPage {
     @FindBy (xpath = "//*[@id=\"payment\"]/ul/li[2]/label") public WebElement payAtTheDoor;
     @FindBy (xpath = "//*[@id=\"order_review\"]/table/tfoot/tr[3]/td/strong/span") public WebElement totalAmount;
 
+    ///////////This line added by Halil /////////////
+    //I ve added for testing issue
+    @FindBy(xpath = "(//ul[@class='breadcrumb']//a)[2]")
+    public WebElement checkOutButton;
+
+    //I have added chout not succefull massege
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div/div/div/div/form[2]/div[1]/ul/li[2]")
+    public WebElement noShippingMethodAlert;
+    //this button not working
+    //new pay at door button
+    @FindBy(xpath = "//*[@id=\"payment\"]/ul/li[2]/label")
+    public WebElement payAtTheDoorNew;
+    //new wire/eft button
+
+    //order notes
+    @FindBy(xpath = "//*[@id=\"order_comments\"]")
+    public WebElement orderNote;
+
+    ///////////This line added by Halil /////////////
 
 
 

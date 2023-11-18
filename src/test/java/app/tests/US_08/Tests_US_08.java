@@ -1,7 +1,7 @@
 package app.tests.US_08;
 
-import app.pageshalil.CheckOutPageHalil;
-import app.pageshalil.HomePageHalil;
+import app.pages.CheckoutPage;
+import app.pages.Homepage;
 import app.utilities.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -36,7 +36,7 @@ public class Tests_US_08 {
     @Test
     public void TC_01(){
         //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
+        Homepage homePageHalil = new Homepage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         //get the page title
@@ -81,7 +81,7 @@ public class Tests_US_08 {
     @Test
     public void TC_02(){
         //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
+        Homepage homePageHalil = new Homepage();
         WaitUtils.waitFor(3);
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
@@ -132,7 +132,7 @@ public class Tests_US_08 {
     @Test
     public void TC_03(){
         //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
+        Homepage homePageHalil = new Homepage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         //get the page title
@@ -193,9 +193,9 @@ public class Tests_US_08 {
     @Test
     public void TC_04(){
         //Create page object for HomePage
-        HomePageHalil homePageHalil = new HomePageHalil();
+        Homepage homePageHalil = new Homepage();
         //Create page object for CheckOutPage
-        CheckOutPageHalil checkOutPageHalil = new CheckOutPageHalil();
+        CheckoutPage checkOutPageHalil = new CheckoutPage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         //get the page title
@@ -247,7 +247,7 @@ public class Tests_US_08 {
         checkOutPageHalil.lastName.sendKeys("TestNG");
         //21- User enters 'Company name' ->	TechPro Education
         //22- User enters 'Country / Region' ->	Canada
-        checkOutPageHalil.countryStateDropdown().selectByVisibleText("Canada");
+        BrowserUtils.dropdownSelectByVisibleText(checkOutPageHalil.countryRegionDropdown,"Canada");
         //23- User enters 'Street address' ->	999 Java Street
         checkOutPageHalil.streetAddressFirstLine.clear();
         checkOutPageHalil.streetAddressFirstLine.sendKeys("999 Java Street");
@@ -255,7 +255,7 @@ public class Tests_US_08 {
         checkOutPageHalil.townCity.clear();
         checkOutPageHalil.townCity.sendKeys("Toronto");
         //25- User enters 'Province' ->	Ontario
-        checkOutPageHalil.provinceStateDropdown().selectByVisibleText("Ontario");
+        BrowserUtils.dropdownSelectByVisibleText(checkOutPageHalil.provinceStateDropdown,"Ontario");
         //26- User enters 'Postal Code' ->	M5V 3L9
         checkOutPageHalil.postCodeZIP.clear();
         checkOutPageHalil.postCodeZIP.sendKeys("M5V 3L9");
