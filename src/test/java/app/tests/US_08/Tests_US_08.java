@@ -8,6 +8,9 @@ import org.testng.annotations.Test;
 
 
 //To Do Create @Before and @After annotations (high priority)
+
+
+////////
 //      Pages name should same with main branch (high priority)
 //      DropDown WebElements should use with BrowserUtils Class (high priority)
 //      WebElements should add GoogleSheet (high priority)
@@ -30,7 +33,6 @@ public class Tests_US_08 {
 //10- User clicks the 'add to wishlist' icon first product on list
 //11- User must see color of 'add to wishlist' icon changed
 
-    //hange
 
     @Test
     public void TC_01(){
