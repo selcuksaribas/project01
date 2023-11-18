@@ -1,13 +1,16 @@
 package app.tests.US_08;
 
-import app.pages.CheckOutPageHalil;
-import app.pages.HomePageHalil;
+import app.pageshalil.CheckOutPageHalil;
+import app.pageshalil.HomePageHalil;
 import app.utilities.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
 //To Do Create @Before and @After annotations (high priority)
+
+
+////////
 //      Pages name should same with main branch (high priority)
 //      DropDown WebElements should use with BrowserUtils Class (high priority)
 //      WebElements should add GoogleSheet (high priority)
@@ -28,6 +31,8 @@ public class Tests_US_08 {
 //9- User clicks the 'search icon'
 //10- User clicks the 'add to wishlist' icon first product on list
 //11- User must see color of 'add to wishlist' icon changed
+
+
     @Test
     public void TC_01(){
         //Create page object for HomePage
