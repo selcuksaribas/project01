@@ -9,11 +9,8 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.awt.*;
-import java.io.IOException;
 import java.util.List;
 
 public class TC_001 {
@@ -42,7 +39,7 @@ public class TC_001 {
     User clicks on Add New button
     And
     User selects product type
-    Then
+    And
     Verify Simple Product, Variable Product, Grouped Product, External-Affiliate Product options exist
     And
     User enters a product title
@@ -64,7 +61,7 @@ public class TC_001 {
     User chooses the file and clicks open
     And
     User clicks on Add to gallery button
-    Then
+    And
     Verify image uploaded successfully
     And
     User enters a short description
@@ -76,9 +73,9 @@ public class TC_001 {
     User enters a category name
     And
     User clicks on Add button under category
-    Then
+    And
     Verify category is added
-    Then
+    And
     Verify Product Brand option exist
     And
     User clicks on Add new product brands
@@ -93,7 +90,7 @@ public class TC_001 {
      */
 
     @Test
-    public void TC_001() throws AWTException, IOException {
+    public void TC_001() {
 
         ExtentReportUtils.createTestReport("Allover_commerce_test","TC_001");
 
@@ -102,7 +99,6 @@ public class TC_001 {
         AddProductsPage addProductsPage = new AddProductsPage();
         ReusableMethods reusableMethods = new ReusableMethods();
         Faker faker = new Faker();
-
 
 
 //        User navigates to website
@@ -136,20 +132,27 @@ public class TC_001 {
         WaitUtils.waitFor(2);
 
 //        User selects product type
-
+        addProductsPage.productTypeDropDown.click();
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("Verification for products options");
+        WaitUtils.waitFor(2);
         Select selectProductType = new Select(addProductsPage.productTypeDropDown);
         selectProductType.selectByIndex(0);
+        WaitUtils.waitFor(2);
 
 //        Verify Simple Product, Variable Product, Grouped Product, External-Affiliate Product options exist
-
-        //Assert options exist
+        //Assert product options exist
         Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Simple Product"));
         Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Variable Product"));
         Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Grouped Product"));
         Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("External/Affiliate Product"));
+        WaitUtils.waitFor(2);
+
 
 //        User enters a product title
         addProductsPage.proTitle.sendKeys("Gaming Table");
+        ExtentReportUtils.passAndCaptureScreenshot("Product title is typed");
+        WaitUtils.waitFor(2);
 
 //        User clicks on large image field to add image
         addProductsPage.largeImageInput.click();
@@ -185,25 +188,25 @@ public class TC_001 {
         addProductsPage.addToGalleryButton.click();
 
 //        Verify image uploaded successfully
-        //Assert Images added successfully
         WaitUtils.waitFor(3);
         Assert.assertTrue(addProductsPage.removeSmallImgButton.isDisplayed());
         Assert.assertTrue(addProductsPage.removeLargeImgButton.isDisplayed());
-        MediaUtils.takeScreenshotOfThisElement(addProductsPage.imageCategoryBrandVerify);
+        ExtentReportUtils.passAndCaptureScreenshot("Verify image uploaded successfully");
 
 //        User enters a short description
-        String shortDescription = "Gaming Desk 47 Inch Gamer Desk Carbon Fiber Surface Computer Workstation Home Office Ergonomic PC Desk Simple Gaming Table with Cup Holder & Headphone Hook";
+        String shortDescription = "Gaming Desk 47 Inch Gamer Desk Carbon Fiber Surface Computer Workstation Home Office Ergonomic PC Desk Simple Gaming Table with Cup Holder & Headphone Hook.";
         ActionsUtil.actionsScrollDown();
         Driver.getDriver().switchTo().frame("excerpt_ifr");
         addProductsPage.shortDescriptionInput.sendKeys(shortDescription);
         Driver.getDriver().switchTo().defaultContent();
 
 //        User enters a description
-        String description = "Large Gaming Surface, Ergonomic Design, Industrial-grade materials, Item weights 33.77 pounds";
+        String description = "Large Gaming Surface, Ergonomic Design, Industrial-grade materials, Item weights 33.77 pounds.";
         Driver.getDriver().switchTo().frame("description_ifr");
         addProductsPage.descriptionInput.sendKeys(description);
         Driver.getDriver().switchTo().defaultContent();
         WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("Short description and Description is typed");
 
 //        User chooses categories
         addProductsPage.categoryCheckbox1.click();
@@ -213,7 +216,7 @@ public class TC_001 {
 
 //        Verify categories are clickable
         Assert.assertTrue(addProductsPage.categoryCheckbox1.isSelected());
-        MediaUtils.takeScreenshotOfThisElement(addProductsPage.imageCategoryBrandVerify);
+        ExtentReportUtils.passAndCaptureScreenshot("Verify categories are clickable");
         WaitUtils.waitFor(2);
         addProductsPage.categoryCheckbox1.click();
         addProductsPage.categoryCheckbox2.click();
@@ -224,33 +227,34 @@ public class TC_001 {
 
 //        User enters a category name
         String categoryName = faker.commerce().department();
-//        String categoryName = "Deneme1996";
+//        String categoryName = "Gaming";
         addProductsPage.newCategoryInput.sendKeys(categoryName);
+        WaitUtils.waitFor(2);
 
 //        User clicks on Add button under category
         addProductsPage.categoryAddButton.click();
         WaitUtils.waitFor(5);
 
 //        Verify category is added
-        MediaUtils.takeScreenshotOfThisElement(addProductsPage.imageCategoryBrandVerify);
         List<WebElement> categoryElements = Driver.getDriver().findElements(By.xpath("//ul[@id='product_cats_checklist']"));
+
         for(WebElement e : categoryElements){
-//            System.out.println(e.getText());
-            Assert.assertTrue(e.getText().contains(categoryName)); //Assert Category is added
+            Assert.assertTrue(e.getText().contains(categoryName + "zz")); //Assert Category is added
+            ExtentReportUtils.passAndCaptureScreenshot("Verify category is added");
         }
 
 //        Verify Product Brand option exist
-        MediaUtils.takeScreenshotOfThisElement(addProductsPage.imageCategoryBrandVerify);
         Assert.assertTrue(addProductsPage.productBrandVerify.isDisplayed());
+        ExtentReportUtils.passAndCaptureScreenshot("Verify Product Brand option exist ");
 
 //        User clicks on Add new product brands
         addProductsPage.addNewProductBrandsButton.click();
         WaitUtils.waitFor(2);
 
 //        User enters the product brand
-        String productName = faker.commerce().productName();
-//        String productName = "Deneme1996";
-        addProductsPage.newProductBrandInput.sendKeys(productName);
+        String productName = faker.company().name();
+//        String productName = "Gamingzz";
+        addProductsPage.newProductBrandInput.sendKeys(productName + "zz");
         WaitUtils.waitFor(2);
 
 //        User clicks on add button under product brands
@@ -258,26 +262,25 @@ public class TC_001 {
         WaitUtils.waitFor(6);
 
 //        Verify new product brand is added
-        MediaUtils.takeScreenshotOfThisElement(addProductsPage.imageCategoryBrandVerify);
         List<WebElement> productBrandElements = Driver.getDriver().findElements(By.xpath("//ul[@id='product_brand']"));
+
         for(WebElement e : productBrandElements){
-//            System.out.println(e.getText());
             Assert.assertTrue(e.getText().contains(productName)); //Assert Product brand is added
+            ExtentReportUtils.passAndCaptureScreenshot("Verify new product brand is added");
         }
 
 //        User clicks on Submit button
         WaitUtils.waitFor(3);
         JSUtils.JSclickWithTimeout(addProductsPage.submitButton);
         WaitUtils.waitFor(6);
-        MediaUtils.takeScreenshotOfTheEntirePageAsString();
 
 //        Verify "Published" is visible
         WaitUtils.waitFor(5);
         Assert.assertTrue(addProductsPage.publishedVerify.isDisplayed());
-        ExtentReportUtils.flush();
-        Driver.closeDriver();
-        Driver.closeDriver();
-        Driver.closeDriver();
+        ExtentReportUtils.passAndCaptureScreenshot("Verify new Product is published");
 
+//        Close the driver
+        Driver.closeDriver();
+        ExtentReportUtils.flush();
     }
 }

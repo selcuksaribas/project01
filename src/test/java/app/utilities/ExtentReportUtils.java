@@ -72,6 +72,15 @@ public class ExtentReportUtils {
             throw new RuntimeException(e);
         }
     }
+    public static void failAndCaptureScreenshot(String message)  {
+        try {
+            extentTest
+                    .log(Status.FAIL,message)
+                    .addScreenCaptureFromPath(takeScreenshotOfTheEntirePageAsString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     /*
     FLUSH MUST BE USED AT THE VERY END TO GENERATE THE REPORT
     ExtentReportUtils.flush
