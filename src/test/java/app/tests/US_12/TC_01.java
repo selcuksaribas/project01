@@ -1,4 +1,4 @@
-package US_12;
+package app.tests.US_12;
 
 import app.pages.AddVendorBillingAddressPage;
 import app.pages.VendorMyAccountPage;
@@ -10,8 +10,6 @@ import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
-import static org.testng.AssertJUnit.assertTrue;
 public class TC_01 {
 
     @Test

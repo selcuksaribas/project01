@@ -1,4 +1,4 @@
-package US_12;
+package app.tests.US_12;
 
 import app.pages.AddVendorBillingAddressPage;
 import app.pages.VendorMyAccountPage;
