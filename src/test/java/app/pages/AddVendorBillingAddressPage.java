@@ -25,4 +25,13 @@ public class AddVendorBillingAddressPage {
     @FindBy(id = "billing_email_field") public WebElement email;
     @FindBy(name = "save_address") public WebElement saveAddressButton;
     @FindBy(name = "//div[@class='woocommerce-notices-wrapper']") public WebElement addressSucces;
+
+//    public static String getFirstName(){
+//        return billingFirstName.getText();
+//    }
+//
+//    public static String getLastName(){
+//        return billingLastName.getText();
+//    }
+
 }

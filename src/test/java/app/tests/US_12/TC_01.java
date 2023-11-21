@@ -1,14 +1,15 @@
 package US_12;
 
+import app.pages.AddVendorBillingAddressPage;
+import app.pages.VendorMyAccountPage;
+import app.pages.VendorSignINPage;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
 import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AddVendorBillingAddressPage;
-import pages.VendorMyAccountPage;
-import pages.VendorSignInPage;
+
 
 import static org.testng.AssertJUnit.assertTrue;
 public class TC_01 {
@@ -30,7 +31,7 @@ Verify  email entered automatically.
 
 
 
-        VendorSignInPage vendorSignInPage = new VendorSignInPage();
+        VendorSignINPage vendorSignInPage = new VendorSignINPage();
         VendorMyAccountPage vendorMyAccountPage = new VendorMyAccountPage();
         AddVendorBillingAddressPage addVendorBillingAddressPage = new AddVendorBillingAddressPage();
         vendorSignInPage.signInWidget.click();
@@ -52,8 +53,6 @@ Verify  email entered automatically.
        Assert.assertTrue(addVendorBillingAddressPage.billingFirstName.isDisplayed());
         Assert.assertTrue(addVendorBillingAddressPage.billingLastName.isDisplayed());
         Assert.assertTrue(addVendorBillingAddressPage.email.isDisplayed());
-
-
 
 
         Assert.assertEquals(addVendorBillingAddressPage.email.getAttribute("value"),ConfigReader.getProperty("sblbtl87@gmail.com"));

@@ -1,12 +1,13 @@
 package app.tests.US_11;
 
+import app.pages.VendorSignINPage;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
 import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.VendorSignInPage;
+
 public class TC_01 {
 
     @Test
@@ -23,7 +24,7 @@ Verify MyAccount is visible.
 Vendor clicks sign in button.
          */
 
-        VendorSignInPage vendorSignInPage = new VendorSignInPage();
+        VendorSignINPage vendorSignInPage = new VendorSignINPage();
         vendorSignInPage.signInWidget.click();
         vendorSignInPage.usernameInput.sendKeys("sblbtl87@gmail.com");
         vendorSignInPage.passwordInput.sendKeys("Sibelbetul1987");

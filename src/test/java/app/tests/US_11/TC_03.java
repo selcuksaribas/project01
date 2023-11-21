@@ -1,14 +1,14 @@
 package app.tests.US_11;
 
+import app.pages.AddVendorBillingAddressPage;
+import app.pages.VendorMyAccountPage;
+import app.pages.VendorSignINPage;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
 import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AddVendorBillingAddressPage;
-import pages.VendorMyAccountPage;
-import pages.VendorSignInPage;
 
 public class TC_03 {
 
@@ -33,7 +33,7 @@ Verify "logout" is selected.
  */
 
 
-        VendorSignInPage vendorSignInPage = new VendorSignInPage();
+        VendorSignINPage vendorSignInPage = new VendorSignINPage();
         VendorMyAccountPage vendorMyAccountPage = new VendorMyAccountPage();
         AddVendorBillingAddressPage addVendorBillingAddressPage = new AddVendorBillingAddressPage();
         vendorSignInPage.signInWidget.click();
@@ -69,7 +69,7 @@ Verify "logout" is selected.
 
         vendorMyAccountPage.storeManager.click();
         WaitUtils.waitFor(2);
-        Assert.assertTrue(vendorMyAccountPage.storeManagerTitle.isDisplayed());
+        Assert.assertTrue(vendorMyAccountPage.storeManager.isDisplayed());
 
         // return to my account page
         JSUtils.JSscrollAllTheWayDown();

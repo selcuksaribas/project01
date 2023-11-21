@@ -1,13 +1,14 @@
 package app.tests.US_11;
 
+import app.pages.VendorMyAccountPage;
+import app.pages.VendorSignINPage;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
 import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.VendorMyAccountPage;
-import pages.VendorSignInPage;
+
 public class TC_02 {
 
     @Test
@@ -29,7 +30,7 @@ Verify "followings" is visible.
 Verify "logout" is visible.
         */
 
-        VendorSignInPage vendorSignInPage = new VendorSignInPage();
+        VendorSignINPage vendorSignInPage = new VendorSignINPage();
         VendorMyAccountPage vendorMyAccountPage = new VendorMyAccountPage();
 
         vendorSignInPage.signInWidget.click();
@@ -45,11 +46,6 @@ Verify "logout" is visible.
 
         Assert.assertTrue(vendorSignInPage.myAccount.isDisplayed());
         WaitUtils.waitFor(1);
-
-
-
-
-
 
         Assert.assertTrue(vendorMyAccountPage.dashboard.isDisplayed());
 
