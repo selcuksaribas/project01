@@ -15,9 +15,9 @@ public class AddVendorBillingAddressPage {
     @FindBy(xpath = "//a[@class='edit btn btn-link btn-primary btn-underline mb-4']")
     public WebElement addBillingAddressButton;
     @FindBy(id = "billing_first_name")
-    public WebElement billingFirstName;
+    public static WebElement billingFirstName;
     @FindBy(id = "billing_last_name")
-    public WebElement billingLastName;
+    public static WebElement billingLastName;
     @FindBy(id = "billing_company")
     public WebElement companyNameInput;
     @FindBy(id= "select2-billing_country-container")
@@ -26,9 +26,9 @@ public class AddVendorBillingAddressPage {
     @FindBy(id= "billing_country")
     public WebElement selectCountryDropDown;
 
-    @FindBy(id = "billing_address_1")
+    @FindBy(name = "billing_address_1")
     public WebElement streetAddress1Input;
-    @FindBy(id = "billing_address_2")
+    @FindBy(name = "billing_address_2")
     public WebElement streetAddress2Input;
     @FindBy(id = "billing_city")
     public WebElement cityInput;
@@ -40,15 +40,22 @@ public class AddVendorBillingAddressPage {
 
     @FindBy(id = "billing_postcode")
     public WebElement zipCodeInput;
-    @FindBy(id = "billing_phone_field")
+    @FindBy(id = "billing_phone")
     public WebElement phoneInput;
     @FindBy(id = "billing_email_field")
     public WebElement email;
     @FindBy(name = "save_address")
     public WebElement saveAddressButton;
-    @FindBy(name = "//div[@class='woocommerce-notices-wrapper']")
-    public WebElement addressSucces;
+    @FindBy(xpath = "//div[@class='woocommerce-notices-wrapper']")
+    public WebElement addressSuccess;
 
 
+    public static String getFirstName(){
+        return billingFirstName.getText();
+    }
+
+    public static String getLastName(){
+        return billingLastName.getText();
+    }
 
 }

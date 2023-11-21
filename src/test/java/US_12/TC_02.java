@@ -4,12 +4,19 @@ import app.utilities.ConfigReader;
 import app.utilities.Driver;
 import app.utilities.JSUtils;
 import app.utilities.WaitUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AddVendorBillingAddressPage;
 import pages.VendorMyAccountPage;
 import pages.VendorSignInPage;
+
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 public class TC_02 {
 
     @Test
@@ -34,9 +41,12 @@ Verify address cahanged succesfully is visible
         VendorMyAccountPage vendorMyAccountPage = new VendorMyAccountPage();
         AddVendorBillingAddressPage addVendorBillingAddressPage = new AddVendorBillingAddressPage();
         vendorSignInPage.signInWidget.click();
-        vendorSignInPage.usernameInput.sendKeys("sblbtl87@gmail.com");
-        vendorSignInPage.passwordInput.sendKeys("Sibelbetul1987");
+        vendorSignInPage.usernameInput.sendKeys("allover_commerce@yopmail.com");
+        vendorSignInPage.passwordInput.sendKeys("123456789@@");
         vendorSignInPage.signInButton.click();
+
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.of(10, ChronoUnit.SECONDS));
 
         JSUtils.JSscrollAllTheWayDown();
         WaitUtils.waitFor(2);
@@ -52,6 +62,14 @@ Verify address cahanged succesfully is visible
         WaitUtils.waitFor(2);
         addVendorBillingAddressPage.selectCountryDropDownArrow.click();
         WaitUtils.waitFor(2);
+
+        //wait.until(ExpectedConditions.elementToBeClickable(addVendorBillingAddressPage.billingFirstName)).sendKeys("Whitehouse");
+        //wait.until(ExpectedConditions.elementToBeClickable(addVendorBillingAddressPage.billingLastName)).sendKeys("Whitehouse");
+
+        Assert.assertEquals(AddVendorBillingAddressPage.getFirstName(),"");
+        Assert.assertEquals(AddVendorBillingAddressPage.getLastName(),"");
+
+        WaitUtils.waitFor(2);
         Select select = new Select(addVendorBillingAddressPage.selectCountryDropDown);
         select.selectByVisibleText("United States (US)");
         WaitUtils.waitFor(2);
@@ -59,6 +77,7 @@ Verify address cahanged succesfully is visible
         WaitUtils.waitFor(2);
         addVendorBillingAddressPage.streetAddress2Input.sendKeys("Whitehouse");
         WaitUtils.waitFor(2);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("billing_city")));
         addVendorBillingAddressPage.cityInput.sendKeys("New York");
         WaitUtils.waitFor(2);
         addVendorBillingAddressPage.selectStateDropdownArrow.click();
@@ -66,14 +85,15 @@ Verify address cahanged succesfully is visible
         Select select1 = new Select(addVendorBillingAddressPage.selectStateDropdown);
         select1.selectByVisibleText("Alabama");
         WaitUtils.waitFor(2);
-        addVendorBillingAddressPage.zipCodeInput.sendKeys("35211");
+        addVendorBillingAddressPage.zipCodeInput.click();
+        addVendorBillingAddressPage.zipCodeInput.sendKeys("32321");
+        addVendorBillingAddressPage.phoneInput.sendKeys("122222");
         WaitUtils.waitFor(2);
-        addVendorBillingAddressPage.phoneInput.sendKeys("4694681658");
-        WaitUtils.waitFor(2);
+        wait.until(ExpectedConditions.elementToBeClickable(addVendorBillingAddressPage.saveAddressButton));
         addVendorBillingAddressPage.saveAddressButton.click();
         WaitUtils.waitFor(2);
-        Assert.assertEquals(addVendorBillingAddressPage.addressSucces.getText(),"Address changed successfully.");
-
+        Assert.assertEquals(addVendorBillingAddressPage.addressSuccess.getText(),"Address changed successfully.");
+        Driver.closeDriver();
 
     }
 }
