@@ -1,4 +1,4 @@
-package app.tests.US_05;
+package app.tests.US_06;
 
 import app.pages.CartPage;
 import app.pages.CheckoutPage;
