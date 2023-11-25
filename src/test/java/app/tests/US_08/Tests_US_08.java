@@ -1,7 +1,6 @@
 package app.tests.US_08;
 
-import app.pages.CheckoutPage;
-import app.pages.Homepage;
+import app.pages.*;
 import app.utilities.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,11 +10,7 @@ import org.testng.annotations.Test;
 
 
 ////////
-//      Pages name should same with main branch (high priority)
-//      DropDown WebElements should use with BrowserUtils Class (high priority)
-//      WebElements should add GoogleSheet (high priority)
 //      Extend Reports and Log4J should create (high priority)
-//      remove properties and use username and password inside the class (high priority)
 //      sign out may need (low priority)
 //      for parallel testing, tests may need priority or grouping Because first TC_01 done then the other should come (low priority)
 
@@ -36,7 +31,7 @@ public class Tests_US_08 {
     @Test
     public void TC_01(){
         //Create page object for HomePage
-        Homepage homePageHalil = new Homepage();
+        HomePage homePageHalil = new HomePage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         //get the page title
@@ -45,9 +40,9 @@ public class Tests_US_08 {
         //2- User clicks on the Sign-in button at home page
         homePageHalil.signInOption.click();
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys("haliltestng");
         //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys("testng");
         //5- User clicks on the Sign-in button at login page
         homePageHalil.rememberMeCheckBox.click();
         //6- User is able to Sign In
@@ -81,7 +76,7 @@ public class Tests_US_08 {
     @Test
     public void TC_02(){
         //Create page object for HomePage
-        Homepage homePageHalil = new Homepage();
+        HomePage homePageHalil = new HomePage();
         WaitUtils.waitFor(3);
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
@@ -93,9 +88,9 @@ public class Tests_US_08 {
         WaitUtils.waitFor(15);
         homePageHalil.signInOption.click();
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys("haliltestng");
         //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys("testng");
         //5- User clicks on the Sign-in button at login page
         homePageHalil.rememberMeCheckBox.click();
         //6- User is able to Sign In
@@ -132,7 +127,7 @@ public class Tests_US_08 {
     @Test
     public void TC_03(){
         //Create page object for HomePage
-        Homepage homePageHalil = new Homepage();
+        HomePage homePageHalil = new HomePage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         //get the page title
@@ -141,9 +136,9 @@ public class Tests_US_08 {
         //2- User clicks on the Sign-in button at home page
         homePageHalil.signInOption.click();
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys("haliltestng");
         //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys("testng");
         //5- User clicks on the Sign-in button at login page
         homePageHalil.rememberMeCheckBox.click();
         //6- User is able to Sign In
@@ -193,7 +188,7 @@ public class Tests_US_08 {
     @Test
     public void TC_04(){
         //Create page object for HomePage
-        Homepage homePageHalil = new Homepage();
+        HomePage homePageHalil = new HomePage();
         //Create page object for CheckOutPage
         CheckoutPage checkOutPageHalil = new CheckoutPage();
         //1- User should navigate to "https://allovercommerce.com/"
@@ -204,9 +199,9 @@ public class Tests_US_08 {
         //2- User clicks on the Sign-in button at home page
         homePageHalil.signInOption.click();
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys(ConfigReader.getProperty("us_08_username"));
+        homePageHalil.emailOrUsername.sendKeys("haliltestng");
         //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys(ConfigReader.getProperty("us_08_password"));
+        homePageHalil.password.sendKeys("testng");
         //5- User clicks on the Sign-in button at login page
         homePageHalil.rememberMeCheckBox.click();
         //6- User is able to Sign In

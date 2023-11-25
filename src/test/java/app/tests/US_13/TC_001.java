@@ -2,7 +2,7 @@ package app.tests.US_13;
 
 import app.pages.HomePage;
 import app.pages.MyAccountPage;
-import app.pages.VendorShippingAddressesPage;
+import app.pages.VendorShippingAddressPage;
 import app.utilities.Driver;
 import app.utilities.ExtentReportUtils;
 import app.utilities.JSUtils;
@@ -59,7 +59,7 @@ public class TC_001 {
 
         HomePage homePage = new HomePage();
         MyAccountPage myAccountPage = new MyAccountPage();
-        VendorShippingAddressesPage vendorShippingAddressesPage = new VendorShippingAddressesPage();
+        VendorShippingAddressPage vendorShippingAddressesPage = new VendorShippingAddressPage();
 
 //        User navigates to website
         Driver.getDriver().get("https://allovercommerce.com/");

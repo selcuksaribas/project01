@@ -1,6 +1,6 @@
 package app.tests.US_14;
 
-import app.pages.AddProductsPage;
+import app.pages.AddProductPage;
 import app.pages.HomePage;
 import app.pages.MyAccountPage;
 import app.pages.ReusableMethods;
@@ -96,7 +96,7 @@ public class TC_001 {
 
         HomePage homePage = new HomePage();
         MyAccountPage myAccountPage = new MyAccountPage();
-        AddProductsPage addProductsPage = new AddProductsPage();
+        AddProductPage addProductsPage = new AddProductPage();
         ReusableMethods reusableMethods = new ReusableMethods();
         Faker faker = new Faker();
 
@@ -132,20 +132,20 @@ public class TC_001 {
         WaitUtils.waitFor(2);
 
 //        User selects product type
-        addProductsPage.productTypeDropDown.click();
+        addProductsPage.productTypeDropdown.click();
         WaitUtils.waitFor(2);
         ExtentReportUtils.passAndCaptureScreenshot("Verification for products options");
         WaitUtils.waitFor(2);
-        Select selectProductType = new Select(addProductsPage.productTypeDropDown);
+        Select selectProductType = new Select(addProductsPage.productTypeDropdown);
         selectProductType.selectByIndex(0);
         WaitUtils.waitFor(2);
 
 //        Verify Simple Product, Variable Product, Grouped Product, External-Affiliate Product options exist
         //Assert product options exist
-        Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Simple Product"));
-        Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Variable Product"));
-        Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("Grouped Product"));
-        Assert.assertTrue(addProductsPage.productTypeDropDown.getText().contains("External/Affiliate Product"));
+        Assert.assertTrue(addProductsPage.productTypeDropdown.getText().contains("Simple Product"));
+        Assert.assertTrue(addProductsPage.productTypeDropdown.getText().contains("Variable Product"));
+        Assert.assertTrue(addProductsPage.productTypeDropdown.getText().contains("Grouped Product"));
+        Assert.assertTrue(addProductsPage.productTypeDropdown.getText().contains("External/Affiliate Product"));
         WaitUtils.waitFor(2);
 
 

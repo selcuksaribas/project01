@@ -1,11 +1,10 @@
-package US_15;
+package app.tests.US_15;
 
 import app.utilities.*;
-
+import app.pages.*;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.ManageProductsPage;
+
 import static org.testng.AssertJUnit.assertTrue;
 
 
@@ -22,8 +21,8 @@ public class TC_01 {
             ManageProductsPage manageProductsPage=new ManageProductsPage();
 
             homePage.signInOption.click();
-            homePage.emailOrUsername.sendKeys(ConfigReader.getProperty("email"));
-            homePage.password.sendKeys(ConfigReader.getProperty("psw"));
+            homePage.emailOrUsername.sendKeys("sblbtl87@gmail.com");
+            homePage.password.sendKeys("Sibelbetul1987");
             homePage.rememberMeCheckBox.click();
             homePage.signInButton.click();
             WaitUtils.waitFor(2);

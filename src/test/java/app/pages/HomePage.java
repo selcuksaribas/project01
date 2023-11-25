@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Homepage {
-    public Homepage(){
+public class HomePage {
+    public HomePage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -104,4 +104,11 @@ public class Homepage {
     public WebElement wishAddedTableQuickViewProperties2Element;
 
     ///////////This line added by Halil /////////////
+
+    ///////Seda////////
+    @FindBy(xpath = "//div[@class='elementor-widget-container']//input[@type='search']")
+    public WebElement searchBar;
+    @FindBy(css = "img[src='https://allovercommerce.com/wp-content/uploads/2022/09/Blue-Ski-Boots-1-150x150.jpg']")
+    public WebElement searchedItemImage;
+    //////Seda////////
 }

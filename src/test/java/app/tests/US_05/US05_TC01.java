@@ -39,7 +39,7 @@ public class US05_TC01 {
         Assert.assertTrue(productPage.successMsg.getText().contains("“Blue Ski Boots” has been added to your cart."));
         productPage.viewCartButton.click();
         cartPage.proceedToCheckoutButton.click();
-        checkoutPage.patAtTheDoorRadioBtn.click();
+        checkoutPage.payAtTheDoor.click();
         checkoutPage.placeOrderButton.click();
         Assert.assertTrue(productPage.orderReceivedMessage.getText().contains("Thank you. Your order has been received."));
 
