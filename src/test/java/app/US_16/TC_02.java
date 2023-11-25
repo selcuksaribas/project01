@@ -1,13 +1,12 @@
-package US_16;
+package app.US_16;
 
-import app.utilities.ActionsUtil;
 import app.utilities.ConfigReader;
 import app.utilities.Driver;
 
 import app.utilities.WaitUtils;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.ManageProductsPage;
+import app.pages.HomePage;
+import app.pages.ManageProductsPage;
 import static org.testng.AssertJUnit.assertTrue;
 
 

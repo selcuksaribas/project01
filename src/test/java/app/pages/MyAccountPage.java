@@ -1,4 +1,4 @@
-package pages;
+package app.pages;
 
 import app.utilities.Driver;
 import org.openqa.selenium.support.PageFactory;

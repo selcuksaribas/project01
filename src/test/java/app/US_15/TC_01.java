@@ -1,11 +1,10 @@
-package US_15;
+package app.US_15;
 
 import app.utilities.*;
 
-import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.ManageProductsPage;
+import app.pages.HomePage;
+import app.pages.ManageProductsPage;
 import static org.testng.AssertJUnit.assertTrue;
 
 

@@ -1,4 +1,4 @@
-package pages;
+package app.pages;
 
 public class CheckoutPage {
 }
