@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="C:/Users/rpert/IdeaProjects/project01/src/test/java/app/tests/US_08(failed)">
+    <classes>
+      <class name="app.tests.US_08.Tests_US_08">
+        <methods>
+          <include name="TC_04"/>
+        </methods>
+      </class> <!-- app.tests.US_08.Tests_US_08 -->
+    </classes>
+  </test> <!-- C:/Users/rpert/IdeaProjects/project01/src/test/java/app/tests/US_08(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->
