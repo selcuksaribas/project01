@@ -19,4 +19,11 @@ public class CartPage {
     @FindBy(name = "calc_shipping")public WebElement updateTotalButton;
     @FindBy(xpath = "//a[@class='checkout-button button alt wc-forward']")public WebElement proceedToCheckoutButton;
     @FindBy(xpath = "//input[@type='number']")public WebElement productQuantity;
+
+    ////////Narin//////////
+    @FindBy(name = "coupon_code")public static WebElement couponCodeBox;
+    @FindBy(name = "apply_coupon")public static WebElement applyCouponButton;
+    @FindBy (xpath = "//*[@class='checkout-button button alt wc-forward']")
+    public static WebElement proceedToCheckOut;
+    ////////Narin///////////
 }

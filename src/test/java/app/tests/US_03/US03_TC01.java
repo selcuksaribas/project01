@@ -1,8 +1,7 @@
 package app.tests.US_03;
 
-import app.pages.CustomerBillingAddressPage;
-import app.pages.HomePage;
-import app.pages.MyAccountPage;
+import app.pages.*;
+
 import app.utilities.*;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;

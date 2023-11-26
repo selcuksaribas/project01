@@ -1,10 +1,9 @@
-package myapp.US_01;
+package app.tests.US_01;
 
-import myapp.pages.AlloverHomePage;
-import myapp.pages.AlloverLoginPage;
-import myapp.utilities.ConfigReader;
-import myapp.utilities.Driver;
-import myapp.utilities.WaitUtils;
+import app.pages.*;
+import app.utilities.ConfigReader;
+import app.utilities.Driver;
+import app.utilities.WaitUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

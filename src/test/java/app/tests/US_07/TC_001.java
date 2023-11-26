@@ -1,4 +1,4 @@
-package app.tests;
+package app.tests.US_07;
 
 import app.pages.ComparePage;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class CompareProductTest {
+public class TC_001 {
 
     private WebDriver driver;
     private ComparePage comparePage;

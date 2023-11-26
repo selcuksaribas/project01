@@ -15,8 +15,8 @@ public class TC_01 {
     public void TC_01(){
 
            // AllovercommercePage allovercommercePage = new AllovercommercePage();
-            ProductPage productPage = new ProductPage();
-            CheckoutPage checkoutPage = new CheckoutPage();
+            ProductPage ProductPage = new ProductPage();
+            CheckoutPage CheckoutPage = new CheckoutPage();
             //Actions actions = new Actions(Driver.getDriver());
             //SoftAssert softAssert = new SoftAssert();
 
@@ -24,7 +24,7 @@ public class TC_01 {
         //    Login to the website
 
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
-        HomePage homePage =new HomePage();
+        HomePage HomePage =new HomePage();
         HomePage.signInOption.click();
         WaitUtils.waitFor(5);
         HomePage.emailOrUsername.sendKeys("narinmtestng@gmail.com");
@@ -55,7 +55,7 @@ public class TC_01 {
 
         //    Verify that the selected product is seen on the cart - checkout
 
-        CartPage cartPage = new CartPage();
+        CartPage CartPage = new CartPage();
         ProductPage.viewCartButton.click();
 //        WaitUtils.waitFor(5);
         //Assert.assertTrue(ProductPage.productAddedSuccessAlert.isDisplayed());
@@ -67,7 +67,7 @@ public class TC_01 {
 
        // CartPage.couponCodeBox.click();
         //allovercommercePage.enterCouponCodekm.sendKeys(ConfigReader.getProperty("couponCode"));
-        ActionsUtil.actionsScrollDown(CartPage.couponCodeBox);
+        ActionsUtil.actionsScrollDown();
         CartPage.couponCodeBox.sendKeys("DISCOUNT10");
         CartPage.applyCouponButton.click();
         //Assert.assertTrue(CartPage.successCoupon.getText().contains("Thank you"));

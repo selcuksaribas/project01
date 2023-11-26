@@ -1,5 +1,8 @@
-import app.utilities.Driver;
+package app.tests.US_07;
 import app.pages.ComparePage;
+import app.utilities.Driver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CompareMultipleProductsTest {
+public class TC_002 {
     private ChromeDriver driver;  // Use ChromeDriver to access specific methods
 
     @BeforeClass
