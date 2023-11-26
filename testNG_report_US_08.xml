@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <!--        !!!!!!do not forget to change your path!!!!!!!!-->
     <test verbose="2" preserve-order="true" name="C:/Users/rpert/IdeaProjects/project01/src/test/java/app/tests/US_08">
 <!--        !!!!!!do not forget to change your path!!!!!!!!-->
         <classes>

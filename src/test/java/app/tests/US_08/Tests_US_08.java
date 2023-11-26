@@ -3,7 +3,7 @@ package app.tests.US_08;
 import app.pages.*;
 import app.utilities.*;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 
@@ -26,36 +26,37 @@ public class Tests_US_08 {
     1. use any method from LoggerUtils directly.
      */
 
-    //-------TC_001--STARTS-------//
+    @BeforeTest
+    public void beforeTest(){
+        LoggerUtils.info("==================================================");
+        LoggerUtils.info("Tests Start for US_08 (TC_01, TC_02, TC_03, TC_04)");
+        LoggerUtils.info("==================================================");
+    }
+
 //1- User should navigate to "https://allovercommerce.com/"
 //2- User clicks on the Sign-in button at home page
 //3- User enters valid Username or email address
 //4- User enters valid password
 //5- User clicks on the Sign-in button at login page
 //6- User is able to Sign In
-    ////The Steps Above Repeat Before Each @Test
-//7- User clicks on to the 'search box'
-//8- User enter a product name
-//9- User clicks the 'search icon'
-//10- User clicks the 'add to wishlist' icon first product on list
-//11- User must see color of 'add to wishlist' icon changed
-    @Test
-    public void TC_01(){
-        LoggerUtils.info("Starting Test US_08 --> TC_01...");
+    ////The Steps Above Repeat Before Each @Test --> @BeforeMethod
+    @BeforeMethod
+    public void beforeMethod(){
         //1. use createTestReport(String name,String description) first for creating extent report capability
-        ExtentReportUtils.createTestReport("US_08 Test Report","Test report for TC_01 Login website");
-        //2. then use any method to mark as pass, info, fail
-        ExtentReportUtils.pass("Starting Test US_08 --> TC_01...");
+        ExtentReportUtils.createTestReport("US_08 Test Report Before Each Method","Test report for Login website");
         //Create page object for HomePage
         HomePage homePageHalil = new HomePage();
         //1- User should navigate to "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
         ExtentReportUtils.pass("User At The Home Page...");
         //get the page title
+        WaitUtils.waitFor(2);
         String title = Driver.getDriver().getTitle();
         Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
         //2- User clicks on the Sign-in button at home page
+        WaitUtils.waitFor(2);
         homePageHalil.signInOption.click();
+        ExtentReportUtils.pass("User Click SignIn Button");
         ExtentReportUtils.info("User Name is : haliltestng and Password is : *****");
         //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
         homePageHalil.emailOrUsername.sendKeys("haliltestng");
@@ -67,9 +68,29 @@ public class Tests_US_08 {
         ExtentReportUtils.pass("User Enter Credentials...");
         //6- User is able to Sign In
         homePageHalil.signInButton.click();
-        //wait may need if the internet connection is slow or website is slow
+        ExtentReportUtils.pass("User Able To See SignOut Button");
         Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
         ExtentReportUtils.passAndCaptureScreenshot("User Successfully SignIn...");
+    }
+
+
+    //-------TC_001--STARTS-------//
+//7- User clicks on to the 'search box'
+//8- User enter a product name
+//9- User clicks the 'search icon'
+//10- User clicks the 'add to wishlist' icon first product on list
+//11- User must see color of 'add to wishlist' icon changed
+    @Test(priority = 1,groups = "US_08")
+    public void TC_01(){
+        LoggerUtils.info("Starting Test US_08 --> TC_01...");
+        //1. use createTestReport(String name,String description) first for creating extent report capability
+        ExtentReportUtils.createTestReport("TC_01 Test Report","User Successfully Add The Item On Wish List");
+        //2. then use any method to mark as pass, info, fail
+        ExtentReportUtils.pass("Starting Test US_08 --> TC_01...");
+        //Create page object for HomePage
+        HomePage homePageHalil = new HomePage();
+        WaitUtils.waitFor(2);
+        //wait may need if the internet connection is slow or website is slow
         //7- User clicks on to the 'search box'
         homePageHalil.searchBox.click();
         //8- User enter a product name ==> apple
@@ -86,12 +107,7 @@ public class Tests_US_08 {
         ActionsUtil.actionsHoverOverOnElement(homePageHalil.searchResult1WishIconAdded);
         ExtentReportUtils.passAndCaptureScreenshot("User Successfully Add The Item On Wish List...");
         Assert.assertTrue(homePageHalil.searchResult1WishIconAdded.isDisplayed());
-        Driver.closeDriver();
-        ExtentReportUtils.pass("Driver is Closed...Test Completed Successfully...");
-        LoggerUtils.info("Driver is Closed...Test Completed Successfully...");
-
-        //3. Then use flush to generate the report
-        ExtentReportUtils.flush();
+        LoggerUtils.info("TC_01");
     }
 
 //same with TC_01
@@ -100,35 +116,16 @@ public class Tests_US_08 {
 //11- User must see color of 'add to wishlist' icons changed for each products
 //12- User clicks 'wishlist' icon top on the page
 //13- User must see all chosen product on the wishlist page
-    @Test
+    @Test(priority = 2,groups = "US_08")
     public void TC_02(){
         LoggerUtils.info("Starting Test US_08 --> TC_02...");
         //1. use createTestReport(String name,String description) first for creating extent report capability
-        ExtentReportUtils.createTestReport("US_08 Test Report","Test report for TC_02 Login website");
+        ExtentReportUtils.createTestReport("TC_02 Test Report","User Able to Click Quick View");
         //2. then use any method to mark as pass, info, fail
         ExtentReportUtils.pass("Starting Test US_08 --> TC_02...");
         //Create page object for HomePage
         HomePage homePageHalil = new HomePage();
-        WaitUtils.waitFor(3);
-        //1- User should navigate to "https://allovercommerce.com/"
-        Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
-        WaitUtils.waitFor(3);
-        //get the page title
-        String title = Driver.getDriver().getTitle();
-        Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
-        //2- User clicks on the Sign-in button at home page
-        WaitUtils.waitFor(15);
-        homePageHalil.signInOption.click();
-        //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys("haliltestng");
-        //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys("testng");
-        //5- User clicks on the Sign-in button at login page
-        homePageHalil.rememberMeCheckBox.click();
-        //6- User is able to Sign In
-        homePageHalil.signInButton.click();
-        //wait may need if the internet connection is slow or website is slow
-        Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+        WaitUtils.waitFor(2);
         //7- User clicks on to the 'search box'
         homePageHalil.searchBox.click();
         //8- User enter a product name ==> apple
@@ -144,17 +141,12 @@ public class Tests_US_08 {
         //13- User must see all chosen products on the wishlist page
         WaitUtils.waitFor(5);
         ActionsUtil.actionsScrollDown();
+        ExtentReportUtils.passAndCaptureScreenshot("User Able to See All Item That Added");
         WaitUtils.waitFor(5);
         ActionsUtil.actionsHoverOverOnElement(homePageHalil.wishAddedTableQuickView);
         ExtentReportUtils.passAndCaptureScreenshot("User Able to Click Quick View");
         Assert.assertTrue(homePageHalil.wishAddedTable.isDisplayed());
-
-        Driver.closeDriver();
-        ExtentReportUtils.pass("Driver is Closed...Test Completed Successfully...");
-        LoggerUtils.info("Driver is Closed...Test Completed Successfully...");
-
-        //3. Then use flush to generate the report
-        ExtentReportUtils.flush();
+        LoggerUtils.info("TC_02");
     }
 
 //same with TC_01
@@ -162,32 +154,16 @@ public class Tests_US_08 {
     //-------TC_003--STARTS-------//
 //14- User clicks first 'QUICK VIEW' button
 //15- User able to see the properties of the product for first product
-    @Test
+    @Test(priority = 3,groups = "US_08")
     public void TC_03(){
         LoggerUtils.info("Starting Test US_08 --> TC_03...");
         //1. use createTestReport(String name,String description) first for creating extent report capability
-        ExtentReportUtils.createTestReport("US_08 Test Report","Test report for TC_03 Login website");
+        ExtentReportUtils.createTestReport("TC_03 Test Report","User Able to See Item Features");
         //2. then use any method to mark as pass, info, fail
         ExtentReportUtils.pass("Starting Test US_08 --> TC_03...");
         //Create page object for HomePage
         HomePage homePageHalil = new HomePage();
-        //1- User should navigate to "https://allovercommerce.com/"
-        Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
-        //get the page title
-        String title = Driver.getDriver().getTitle();
-        Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
-        //2- User clicks on the Sign-in button at home page
-        homePageHalil.signInOption.click();
-        //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys("haliltestng");
-        //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys("testng");
-        //5- User clicks on the Sign-in button at login page
-        homePageHalil.rememberMeCheckBox.click();
-        //6- User is able to Sign In
-        homePageHalil.signInButton.click();
-        //wait may need if the internet connection is slow or website is slow
-        Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+        WaitUtils.waitFor(2);
         //12- User clicks 'wishlist' icon top on the page
         homePageHalil.wishListPageButton.click();
         //13- User must see all chosen products on the wishlist page
@@ -202,13 +178,7 @@ public class Tests_US_08 {
         //15- User able to see the properties of the product for first product
         WaitUtils.waitFor(5);
         Assert.assertTrue(homePageHalil.wishAddedTableQuickViewProperties.isDisplayed());
-
-        Driver.closeDriver();
-        ExtentReportUtils.pass("Driver is Closed...Test Completed Successfully...");
-        LoggerUtils.info("Driver is Closed...Test Completed Successfully...");
-
-        //3. Then use flush to generate the report
-        ExtentReportUtils.flush();
+        LoggerUtils.info("TC_03");
     }
 
 //same with TC_01
@@ -234,34 +204,18 @@ public class Tests_US_08 {
 //30- User cliscks "PLACE ORDER"
 //31- User clicks 'Ship to a different address?'
 //32- User enters same data (19 to 26)
-    @Test
+    @Test(priority = 4,groups = "US_08")
     public void TC_04(){
         LoggerUtils.info("Starting Test US_08 --> TC_04...");
         //1. use createTestReport(String name,String description) first for creating extent report capability
-        ExtentReportUtils.createTestReport("US_08 Test Report","Test report for TC_04 Login website");
+        ExtentReportUtils.createTestReport("TC_04 Test Report","User Not Able To Complete Purchase!!!");
         //2. then use any method to mark as pass, info, fail
         ExtentReportUtils.pass("Starting Test US_08 --> TC_04...");
         //Create page object for HomePage
         HomePage homePageHalil = new HomePage();
         //Create page object for CheckOutPage
         CheckoutPage checkOutPageHalil = new CheckoutPage();
-        //1- User should navigate to "https://allovercommerce.com/"
-        Driver.getDriver().get(ConfigReader.getProperty("allover_commerce_url"));
-        //get the page title
-        String title = Driver.getDriver().getTitle();
-        Assert.assertTrue(title.contains(ConfigReader.getProperty("allover_commerce_title")));
-        //2- User clicks on the Sign-in button at home page
-        homePageHalil.signInOption.click();
-        //3- User enters valid Username or email address ==> property=>us_08_username (haliltestng)
-        homePageHalil.emailOrUsername.sendKeys("haliltestng");
-        //4- User enters valid password ==> property=>us_08_password (testng)
-        homePageHalil.password.sendKeys("testng");
-        //5- User clicks on the Sign-in button at login page
-        homePageHalil.rememberMeCheckBox.click();
-        //6- User is able to Sign In
-        homePageHalil.signInButton.click();
-        //wait may need if the internet connection is slow or website is slow
-        Assert.assertTrue(homePageHalil.signOutButton.isDisplayed());
+        WaitUtils.waitFor(2);
         //12- User clicks 'wishlist' icon top on the page
         homePageHalil.wishListPageButton.click();
         //13- User must see all chosen products on the wishlist page
@@ -276,6 +230,7 @@ public class Tests_US_08 {
             WaitUtils.waitFor(1);
             //15- User see simple alert "“Apple” has been added to your cart."
             Assert.assertTrue(homePageHalil.itemAddedToCartAlert.isDisplayed());
+            ExtentReportUtils.passAndCaptureScreenshot("User Able to See Green Alert");
             WaitUtils.waitFor(12);
             ActionsUtil.actionsScrollDown();
             WaitUtils.waitFor(1);
@@ -285,7 +240,8 @@ public class Tests_US_08 {
         WaitUtils.waitFor(1);
         homePageHalil.cartButton.click();
         //17- User clicks "CHECKOUT" button
-        WaitUtils.waitFor(1);
+        WaitUtils.waitFor(2);
+        ExtentReportUtils.passAndCaptureScreenshot("User Able To See Cart");
         homePageHalil.checkOutButton.click();
         //18- User fills in billing information
         //19- User enters 'First name' ->	Halil
@@ -346,12 +302,22 @@ public class Tests_US_08 {
             LoggerUtils.error("User Not Able to Complete Purchase and Screen Shoot Could Not Taken By Media Utils");
             throw new RuntimeException(e);
         }
+        LoggerUtils.info("TC_04");
 
+    }
+    @AfterMethod
+    public void afterMethod(){
         Driver.closeDriver();
         ExtentReportUtils.pass("Driver is Closed...Test Completed Successfully...");
-        LoggerUtils.info("Driver is Closed...Test Completed Successfully...");
+        LoggerUtils.info("Test Completed Successfully / Driver is Closed...");
 
         //3. Then use flush to generate the report
         ExtentReportUtils.flush();
+    }
+    @AfterTest
+    public void afterTest(){
+        LoggerUtils.info("===============================================");
+        LoggerUtils.info("All Test Cases Successfully Completed For US_08");
+        LoggerUtils.info("===============================================");
     }
 }
